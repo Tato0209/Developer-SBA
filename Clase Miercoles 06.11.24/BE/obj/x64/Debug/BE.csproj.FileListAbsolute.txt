@@ -1,6 +1,0 @@
-D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\bin\x64\Debug\BE.dll
-D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\bin\x64\Debug\BE.pdb
-D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\x64\Debug\BE.csproj.AssemblyReference.cache
-D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\x64\Debug\BE.csproj.CoreCompileInputs.cache
-D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\x64\Debug\BE.dll
-D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\x64\Debug\BE.pdb

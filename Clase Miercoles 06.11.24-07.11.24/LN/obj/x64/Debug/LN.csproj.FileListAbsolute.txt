@@ -1,0 +1,22 @@
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\bin\x64\Debug\LN.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\bin\x64\Debug\LN.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\bin\x64\Debug\BE.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\bin\x64\Debug\BE.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\obj\x64\Debug\LN.csproj.AssemblyReference.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\obj\x64\Debug\Interop.SAPbobsCOM.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\obj\x64\Debug\LN.csproj.ResolveComReference.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\obj\x64\Debug\LN.csproj.CoreCompileInputs.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\obj\x64\Debug\LN.csproj.Up2Date
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\obj\x64\Debug\LN.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos1\LN\obj\x64\Debug\LN.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\bin\x64\Debug\LN.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\bin\x64\Debug\LN.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\bin\x64\Debug\BE.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\bin\x64\Debug\BE.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\obj\x64\Debug\LN.csproj.AssemblyReference.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\obj\x64\Debug\Interop.SAPbobsCOM.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\obj\x64\Debug\LN.csproj.ResolveComReference.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\obj\x64\Debug\LN.csproj.CoreCompileInputs.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\obj\x64\Debug\LN.csproj.Up2Date
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\obj\x64\Debug\LN.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24\LN\obj\x64\Debug\LN.pdb
