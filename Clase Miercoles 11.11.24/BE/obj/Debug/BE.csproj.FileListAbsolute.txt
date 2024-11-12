@@ -1,0 +1,12 @@
+D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\bin\Debug\BE.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\bin\Debug\BE.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\Debug\BE.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos1\BE\obj\Debug\BE.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24-07.11.24\BE\bin\Debug\BE.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24-07.11.24\BE\bin\Debug\BE.pdb
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24-07.11.24\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24-07.11.24\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24-07.11.24\BE\obj\Debug\BE.dll
+D:\Cursos\Developer SAP BO 2024\Proyectos\Semana 2\Developer-SBA\Clase Miercoles 06.11.24-07.11.24\BE\obj\Debug\BE.pdb
