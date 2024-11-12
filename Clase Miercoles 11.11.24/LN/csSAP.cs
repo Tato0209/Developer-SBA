@@ -102,7 +102,6 @@ namespace LN
                 Release(oItems);
             }
         }
-
         public bool GetItems(ref csItems objItems)
         {
             SAPbobsCOM.Items oItems =
@@ -137,12 +136,10 @@ namespace LN
                 Release(oItems);
             }
         }
-
         public void Release(object obj)
         {
             System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);// Liberar objeto COM // Se instancia el objeto y se libera con esta función 
         }
-
         public bool DeleteItems(string ItemCODE) // Eliminar Item
         {
             SAPbobsCOM.Items oItems = //    Instanciar objeto Items
@@ -175,7 +172,6 @@ namespace LN
                 Release(oItems);// Liberar objeto Items
             }
         }
-
         public bool AddBussinesPartner(CsBussinesPartner objBussinesPartner)
         {
             SAPbobsCOM.BusinessPartners oBP = //    Instanciar objeto BusinessPartners
