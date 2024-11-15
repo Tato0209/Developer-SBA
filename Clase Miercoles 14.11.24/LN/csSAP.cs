@@ -374,24 +374,24 @@ namespace LN
             }
         }
 
-        public bool AddJournalEntries(csJournalEntry objJournalEntry, ref string sTransID)
+        public bool AddJournalEntries(csJournalEntry objJournalEntry, ref string sTransID) // Agregar asiento contable // Agregar JournalEntries //sTransID = ID de la transacción
         {
             SAPbobsCOM.JournalEntries oJE = (SAPbobsCOM.JournalEntries)oCompany.GetBusinessObject(BoObjectTypes.oJournalEntries);
             try
             {
-                oJE.ReferenceDate = GetFecha(objJournalEntry.RefDate);
-                oJE.DueDate = GetFecha(objJournalEntry.DueDate);
+                oJE.ReferenceDate = GetFecha(objJournalEntry.RefDate); // Fecha de referencia
+                oJE.DueDate = GetFecha(objJournalEntry.DueDate); // Fecha de vencimiento
                 oJE.TaxDate = GetFecha(objJournalEntry.TaxDate);
                 oJE.Memo = objJournalEntry.Memo;
                 oJE.Reference = objJournalEntry.Ref1;
                 oJE.Reference2 = objJournalEntry.Ref2;
                 oJE.Reference3 = objJournalEntry.Ref3;
-                if (objJournalEntry.Indicator != null && objJournalEntry.Indicator != "") oJE.Indicator = objJournalEntry.Indicator;
-                if (objJournalEntry.Project != null && objJournalEntry.Project != "") oJE.ProjectCode = objJournalEntry.Project;
-                if (objJournalEntry.TransCode != null && objJournalEntry.TransCode != "") oJE.TransactionCode = objJournalEntry.TransCode;
+                if (objJournalEntry.Indicator != null && objJournalEntry.Indicator != "") oJE.Indicator = objJournalEntry.Indicator; // Indicador
+                if (objJournalEntry.Project != null && objJournalEntry.Project != "") oJE.ProjectCode = objJournalEntry.Project; //proyecto
+                if (objJournalEntry.TransCode != null && objJournalEntry.TransCode != "") oJE.TransactionCode = objJournalEntry.TransCode; // Código de transacción
 
 
-                foreach (csJournalEntryLines objLine in objJournalEntry.Lines)
+                foreach (csJournalEntryLines objLine in objJournalEntry.Lines) // Recorrer lista de líneas  //
                 {
                     if (objLine.Account != null && objLine.Account != "") oJE.Lines.AccountCode = objLine.Account;
                     if (objLine.ShortName != null && objLine.ShortName != "") oJE.Lines.ShortName = objLine.ShortName;
@@ -417,7 +417,7 @@ namespace LN
                 }
 
 
-                iRet = oJE.Add();
+                iRet = oJE.Add(); // Agregar JournalEntries
 
 
                 if (iRet == 0)
@@ -440,18 +440,18 @@ namespace LN
                 Release(oJE);
             }
         }
-        public bool CancelJournalEntries(int iTransId, ref string sTransIDCancel)
+        public bool CancelJournalEntries(int iTransId, ref string sTransIDCancel) // Cancelar asiento contable // Cancelar JournalEntries //sTransIDCancel = ID de la transacción cancelada
         {
-            SAPbobsCOM.JournalEntries oJE = (SAPbobsCOM.JournalEntries)oCompany.GetBusinessObject(BoObjectTypes.oJournalEntries);
+            SAPbobsCOM.JournalEntries oJE = (SAPbobsCOM.JournalEntries)oCompany.GetBusinessObject(BoObjectTypes.oJournalEntries); // Instanciar objeto JournalEntries
             try
             {
-                if (oJE.GetByKey(iTransId))
+                if (oJE.GetByKey(iTransId)) // GetByKey busca el JournalEntries por el ID // Unico JournalEntries
                 {
-                    iRet = oJE.Cancel();
+                    iRet = oJE.Cancel();// Cancelar JournalEntries
 
                     if (iRet == 0)
                     {
-                        sTransIDCancel = oCompany.GetNewObjectKey();
+                        sTransIDCancel = oCompany.GetNewObjectKey(); // Obtener el ID de la transacción
                         return true;
                     }
                     else
@@ -478,7 +478,7 @@ namespace LN
 
         public DateTime GetFecha(string sFecha)
         {
-            return DateTime.Parse(sFecha.Substring(6, 2) + "/" + sFecha.Substring(4, 2) + "/" + sFecha.Substring(0, 4));
+            return DateTime.Parse(sFecha.Substring(6, 2) + "/" + sFecha.Substring(4, 2) + "/" + sFecha.Substring(0, 4)); // Convertir fecha // fecha en formato AAAAMMDD
         }
 
 
