@@ -21,11 +21,11 @@ namespace LN
             try
             {
                 if (oCompany == null || !oCompany.Connected) {
-                    oCompany = new Company();
-                    oCompany.Server = objCompany.ServerBD;
-                    oCompany.DbUserName = objCompany.UsuarioBD;
-                    oCompany.DbPassword = objCompany.PassBD;
-                    if (objCompany.ServerLC != "") oCompany.LicenseServer = objCompany.ServerLC;
+                    oCompany = new Company(); // Instanciar objeto Company
+                    oCompany.Server = objCompany.ServerBD;// Servidor de la base de datos
+                    oCompany.DbUserName = objCompany.UsuarioBD;// Usuario de la base de datos
+                    oCompany.DbPassword = objCompany.PassBD;// Contraseña de la base de datos
+                    if (objCompany.ServerLC != "") oCompany.LicenseServer = objCompany.ServerLC;// Servidor de licencias
                     oCompany.CompanyDB = objCompany.NameBD;
                     oCompany.UserName = objCompany.UserSAP;
                     oCompany.Password = objCompany.PassSAP;
@@ -76,21 +76,22 @@ namespace LN
                 oItems.ItemCode = objItems.ItemCode;
                 oItems.ItemName = objItems.ItemName;
                 oItems.ItemsGroupCode = objItems.GroupCode;
-                oItems.InventoryItem = objItems.InvntItem == "Y" ? BoYesNoEnum.tYES : BoYesNoEnum.tNO;
-                oItems.SalesItem = objItems.SellItem == "Y" ? BoYesNoEnum.tYES : BoYesNoEnum.tNO;
-                oItems.PurchaseItem = objItems.PrchseItem == "Y" ? BoYesNoEnum.tYES : BoYesNoEnum.tNO;
+                oItems.InventoryItem = objItems.InvntItem == "Y" ? BoYesNoEnum.tYES : BoYesNoEnum.tNO; // Si es inventariable
+                oItems.SalesItem = objItems.SellItem == "Y" ? BoYesNoEnum.tYES : BoYesNoEnum.tNO;// Si es de venta
+                oItems.PurchaseItem = objItems.PrchseItem == "Y" ? BoYesNoEnum.tYES : BoYesNoEnum.tNO;// Si es de compra
                 oItems.UserFields.Fields.Item("U_C2410_P001").Value = objItems.U_C2410_P001; // Como declarar campo de usuario 
 
 
                 iRet = bExiste ? oItems.Update() : oItems.Add();   // Si existe actualiza, sino agrega
-                if (iRet == 0) {
+                if (iRet == 0)
+                {// Si no hay error
                     return true;
                 }
                 else
                 {
-                    oCompany.GetLastError(out iErrCod, out sErrMsg);
-                    throw new Exception(String.Concat(iErrCod, ":", sErrMsg));
-                    throw new Exception(String.Concat(iRet, ":", sErrMsg));
+                    oCompany.GetLastError(out iErrCod, out sErrMsg);// Obtener mensaje de error
+                    throw new Exception(String.Concat(iErrCod, ":", sErrMsg));// Lanzar excepción
+                    throw new Exception(String.Concat(iRet, ":", sErrMsg));// Lanzar excepción
                 }
             }
             catch (Exception ex)
@@ -99,7 +100,7 @@ namespace LN
             }
             finally
             {
-                Release(oItems);
+                Release(oItems);// Liberar objeto Items
             }
         }
         public bool GetItems(ref csItems objItems)
