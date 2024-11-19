@@ -56,10 +56,22 @@
             this.txtJE = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.DocMkt = new System.Windows.Forms.TabPage();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtOC = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.btnEM = new System.Windows.Forms.Button();
+            this.btnOC = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Articulo.SuspendLayout();
             this.SocioNegocio.SuspendLayout();
             this.Asiento.SuspendLayout();
+            this.DocMkt.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -67,6 +79,7 @@
             this.tabControl1.Controls.Add(this.Articulo);
             this.tabControl1.Controls.Add(this.SocioNegocio);
             this.tabControl1.Controls.Add(this.Asiento);
+            this.tabControl1.Controls.Add(this.DocMkt);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -339,6 +352,108 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // DocMkt
+            // 
+            this.DocMkt.Controls.Add(this.textBox5);
+            this.DocMkt.Controls.Add(this.textBox4);
+            this.DocMkt.Controls.Add(this.textBox3);
+            this.DocMkt.Controls.Add(this.textBox2);
+            this.DocMkt.Controls.Add(this.txtOC);
+            this.DocMkt.Controls.Add(this.button13);
+            this.DocMkt.Controls.Add(this.button12);
+            this.DocMkt.Controls.Add(this.button11);
+            this.DocMkt.Controls.Add(this.btnEM);
+            this.DocMkt.Controls.Add(this.btnOC);
+            this.DocMkt.Location = new System.Drawing.Point(4, 22);
+            this.DocMkt.Name = "DocMkt";
+            this.DocMkt.Size = new System.Drawing.Size(752, 350);
+            this.DocMkt.TabIndex = 3;
+            this.DocMkt.Text = "Documentos MKT";
+            this.DocMkt.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(176, 195);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(130, 20);
+            this.textBox5.TabIndex = 9;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(176, 152);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(130, 20);
+            this.textBox4.TabIndex = 8;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(176, 112);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(130, 20);
+            this.textBox3.TabIndex = 7;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(176, 73);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(130, 20);
+            this.textBox2.TabIndex = 6;
+            // 
+            // txtOC
+            // 
+            this.txtOC.Location = new System.Drawing.Point(176, 32);
+            this.txtOC.Name = "txtOC";
+            this.txtOC.Size = new System.Drawing.Size(130, 20);
+            this.txtOC.TabIndex = 5;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(20, 193);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(150, 23);
+            this.button13.TabIndex = 4;
+            this.button13.Text = "button13";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(20, 150);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(150, 23);
+            this.button12.TabIndex = 3;
+            this.button12.Text = "button12";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(20, 110);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(150, 23);
+            this.button11.TabIndex = 2;
+            this.button11.Text = "button11";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // btnEM
+            // 
+            this.btnEM.Location = new System.Drawing.Point(20, 71);
+            this.btnEM.Name = "btnEM";
+            this.btnEM.Size = new System.Drawing.Size(150, 23);
+            this.btnEM.TabIndex = 1;
+            this.btnEM.Text = "Crear Entrada de Mercancia";
+            this.btnEM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEM.UseVisualStyleBackColor = true;
+            this.btnEM.Click += new System.EventHandler(this.btnEM_Click);
+            // 
+            // btnOC
+            // 
+            this.btnOC.Location = new System.Drawing.Point(20, 32);
+            this.btnOC.Name = "btnOC";
+            this.btnOC.Size = new System.Drawing.Size(150, 23);
+            this.btnOC.TabIndex = 0;
+            this.btnOC.Text = "Crear Orden de Compra";
+            this.btnOC.UseVisualStyleBackColor = true;
+            this.btnOC.Click += new System.EventHandler(this.btnOC_Click);
+            // 
             // Entidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,6 +469,8 @@
             this.SocioNegocio.PerformLayout();
             this.Asiento.ResumeLayout(false);
             this.Asiento.PerformLayout();
+            this.DocMkt.ResumeLayout(false);
+            this.DocMkt.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -388,5 +505,16 @@
         private System.Windows.Forms.TextBox txtJE;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TabPage DocMkt;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtOC;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnEM;
+        private System.Windows.Forms.Button btnOC;
     }
 }

@@ -476,6 +476,105 @@ namespace LN
             }
         }
 
+        public bool AddMarketingDocument(csDocuments objDocument, ref string stransID) // Agregar documento de marketing // Agregar MarketingDocument //
+        {
+            SAPbobsCOM.Documents oDocSAP = oCompany.GetBusinessObject(BoObjectTypes.oPurchaseOrders);
+            try
+            {
+                oDocSAP.CardCode = objDocument.CardCode;
+                if (objDocument.CardName != null && objDocument.CardName != "") oDocSAP.CardName = objDocument.CardName;
+                if (objDocument.DocDate != null && objDocument.DocDate != "") oDocSAP.DocDate = GetFecha(objDocument.DocDate);
+                if (objDocument.DocDueDate != null && objDocument.DocDueDate != "") oDocSAP.DocDueDate = GetFecha(objDocument.DocDueDate);
+                if (objDocument.TaxDate != null && objDocument.TaxDate != "") oDocSAP.TaxDate = GetFecha(objDocument.TaxDate);
+                if (objDocument.NumAtCard != null && objDocument.NumAtCard != "") oDocSAP.NumAtCard = objDocument.NumAtCard;
+                if (objDocument.GroupNum != 0) oDocSAP.GroupNumber = objDocument.GroupNum;
+                if (objDocument.SlpCode != 0) oDocSAP.SalesPersonCode = objDocument.SlpCode;
+                if (objDocument.Comments != null && objDocument.Comments != "") oDocSAP.Comments = objDocument.Comments;
+                if (objDocument.Indicator != null && objDocument.Indicator != "") oDocSAP.Indicator = objDocument.Indicator;
+                if(objDocument.BPLid != 0) oDocSAP.BPL_IDAssignedToInvoice = objDocument.BPLid;
+                if (objDocument.DocType != null && objDocument.DocType != "") oDocSAP.DocType = objDocument.DocType == "I" ? BoDocumentTypes.dDocument_Items : BoDocumentTypes.dDocument_Service;
+                if (objDocument.DocCurr != null && objDocument.DocCurr != "") oDocSAP.DocCurrency = objDocument.DocCurr;
+                oDocSAP.UserFields.Fields.Item("U_U_C2410_P001").Value = objDocument.U_U_C2410_P001;
+                oDocSAP.UserFields.Fields.Item("U_U_C2410_P002").Value = objDocument.U_U_C2410_P002;
+
+                foreach (csDocumentLines objLine in objDocument.Lines)
+                {
+
+                    oDocSAP.Lines.ItemCode = objLine.ItemCode;
+                    if (objLine.Dscrption != null && objLine.Dscrption != "") oDocSAP.Lines.ItemDescription = objLine.Dscrption;
+                    if (objLine.AcctCode != null && objLine.AcctCode != "") oDocSAP.Lines.AccountCode = objLine.AcctCode;
+                    if (objLine.Quantity != 0) oDocSAP.Lines.Quantity = objLine.Quantity;
+                    if (objLine.WhsCode != null && objLine.WhsCode != "") oDocSAP.Lines.WarehouseCode = objLine.WhsCode;
+                    if (objLine.UnitPrice != 0) oDocSAP.Lines.Price = objLine.UnitPrice;
+                    if (objLine.DiscPrcnt != 0) oDocSAP.Lines.DiscountPercent = objLine.DiscPrcnt;
+                    if (objLine.Project != null && objLine.Project != "") oDocSAP.Lines.ProjectCode = objLine.Project;
+                    if (objLine.OcrCode1 != null && objLine.OcrCode1 != "") oDocSAP.Lines.CostingCode = objLine.OcrCode1;
+                    if (objLine.OcrCode2 != null && objLine.OcrCode2 != "") oDocSAP.Lines.CostingCode2 = objLine.OcrCode2;
+                    if (objLine.OcrCode3 != null && objLine.OcrCode3 != "") oDocSAP.Lines.CostingCode3 = objLine.OcrCode3;
+                    if (objLine.OcrCode4 != null && objLine.OcrCode4 != "") oDocSAP.Lines.CostingCode4 = objLine.OcrCode4;
+                    if (objLine.OcrCode5 != null && objLine.OcrCode5 != "") oDocSAP.Lines.CostingCode5 = objLine.OcrCode5;
+                    if (objLine.BaseType != 0) oDocSAP.Lines.BaseType = objLine.BaseType;
+                    if (objLine.BaseEntry != 0) oDocSAP.Lines.BaseEntry = objLine.BaseEntry;
+                    if (objLine.BaseLine != 0) oDocSAP.Lines.BaseLine = objLine.BaseLine;
+
+                    if (objLine.BaseType != 0) // Validar si es una referencia
+                    {
+                        oDocSAP.Lines.BaseType = objLine.BaseType; // Tipo de referencia
+                        oDocSAP.Lines.BaseEntry = objLine.BaseEntry;// Entrada de referencia
+                        oDocSAP.Lines.BaseLine = objLine.BaseLine;// Línea de referencia
+                    }
+
+                    #region Lotes // Lotes
+                    foreach (csDocumentLinesBatch objBatch in objLine.LinesBatch)
+                    {
+                        oDocSAP.Lines.BatchNumbers.BatchNumber = objBatch.BatchNumber;
+                        if (objBatch.Quantity != 0) oDocSAP.Lines.BatchNumbers.Quantity = objBatch.Quantity;
+                        if (objBatch.MnfSerial != null && objBatch.MnfSerial != "") oDocSAP.Lines.BatchNumbers.InternalSerialNumber = objBatch.MnfSerial;
+                        if (objBatch.LotNumber != null && objBatch.LotNumber != "") oDocSAP.Lines.BatchNumbers.BatchNumber = objBatch.LotNumber;
+                        if (objBatch.InDate != null && objBatch.InDate != "") oDocSAP.Lines.BatchNumbers.ManufacturingDate = GetFecha(objBatch.InDate);
+                        if (objBatch.MnfDate != null && objBatch.MnfDate != "") oDocSAP.Lines.BatchNumbers.ManufacturingDate = GetFecha(objBatch.MnfDate);
+                        if (objBatch.ExpDate != null && objBatch.ExpDate != "") oDocSAP.Lines.BatchNumbers.ExpiryDate = GetFecha(objBatch.ExpDate);
+                        oDocSAP.Lines.BatchNumbers.Add();
+                    }
+                    #endregion
+
+                    #region Ubicaciones
+                    foreach (csDocumentLinesBinAllocations objBin in objLine.LinesBinAllocations)
+                    {
+                        oDocSAP.Lines.BinAllocations.Quantity = objBin.Quantity;
+                        if (objBin.BinAbsEntry != 0) oDocSAP.Lines.BinAllocations.BinAbsEntry = objBin.BinAbsEntry;
+                        if (objBin.SerialAndBatchNumbersBaseLine != 0) oDocSAP.Lines.BinAllocations.SerialAndBatchNumbersBaseLine = objBin.SerialAndBatchNumbersBaseLine;
+                        oDocSAP.Lines.BinAllocations.Add(); // Agregar Ubicación
+                    }
+                    #endregion
+
+                    oDocSAP.Lines.Add();
+                }
+                iRet = oDocSAP.Add(); // Agregar JournalEntries
+
+
+                if (iRet == 0)
+                {
+                    stransID = oCompany.GetNewObjectKey(); // Obtener el ID de la transacción
+                    return true;
+                }
+                else
+                {
+                    oCompany.GetLastError(out iErrCod, out sErrMsg);
+                    throw new Exception(String.Concat(iErrCod, ":", sErrMsg));
+                    throw new Exception(String.Concat(iRet, ":", sErrMsg));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Release(oDocSAP);
+            }
+        }
 
         public DateTime GetFecha(string sFecha)
         {

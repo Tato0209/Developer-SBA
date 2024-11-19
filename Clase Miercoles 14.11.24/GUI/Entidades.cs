@@ -290,5 +290,62 @@ namespace GUI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnEM_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                csDocuments oDoc = new csDocuments(); //Documento
+                csDocumentLines oLine; //Lineas
+            
+
+                oDoc.DocDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.DocDueDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.TaxDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.CardCode = "PL20612838550";
+                oDoc.DocType = "I";
+                oDoc.DocCurr = "SOL";
+                oDoc.Comments = "Created by SDK";
+                oDoc.U_U_C2410_P001 = "a";
+                oDoc.U_U_C2410_P002 = "b";
+
+                oLine = new csDocumentLines(); //Linea 1
+                oLine.ItemCode = "0160780016";
+                oLine.Quantity = 1;
+                oLine.WhsCode = "A001";
+                oLine.UnitPrice = 100.00;
+                oLine.Project = "CRIS4";
+                oLine.OcrCode1 = "TRANS";
+                oLine.OcrCode2 = "CRIS4";
+                oLine.OcrCode3 = "MANT";
+                oLine.OcrCode4 = "NO-APLI";
+                //oLine.OcrCode5 = "";
+                oLine.BaseType = 0;
+                oLine.BaseEntry = 0;
+                oLine.BaseLine = 0;
+
+                 oDoc.Lines.Add(oLine); //Add Linea 1
+                string stransID = ""; //ID del Documento
+                if (oSAP.AddMarketingDocument(oDoc, ref stransID)) //Agregar Documento
+                {
+                    MessageBox.Show("Documento Agregado");
+                    this.txtOC.Text = stransID; //ID del Documento
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar Documento");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+        }
     }
 }
