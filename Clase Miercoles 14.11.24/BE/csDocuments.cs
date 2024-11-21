@@ -26,7 +26,6 @@ namespace BE
 
         public List<csDocumentLines> Lines = new List<csDocumentLines>();
        
-        
     }
     public class csDocumentLines
     {
@@ -67,6 +66,5 @@ namespace BE
         public int BinAbsEntry { get; set; }
         public double Quantity { get; set; }
         public int SerialAndBatchNumbersBaseLine { get; set; }
-
     }
 }
