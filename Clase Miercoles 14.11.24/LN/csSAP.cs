@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE;
 using SAPbobsCOM;
-using BE;
+using System;
 
 namespace LN
 {
@@ -20,7 +16,8 @@ namespace LN
         {
             try
             {
-                if (oCompany == null || !oCompany.Connected) {
+                if (oCompany == null || !oCompany.Connected)
+                {
                     oCompany = new Company(); // Instanciar objeto Company
                     oCompany.Server = objCompany.ServerBD;// Servidor de la base de datos
                     oCompany.DbUserName = objCompany.UsuarioBD;// Usuario de la base de datos
@@ -29,7 +26,8 @@ namespace LN
                     oCompany.CompanyDB = objCompany.NameBD;
                     oCompany.UserName = objCompany.UserSAP;
                     oCompany.Password = objCompany.PassSAP;
-                    switch (objCompany.ServerType) {
+                    switch (objCompany.ServerType)
+                    {
                         case 0:
                             oCompany.DbServerType = BoDataServerTypes.dst_MSSQL2014;
                             break;
@@ -59,7 +57,8 @@ namespace LN
                     return true;
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
@@ -185,16 +184,16 @@ namespace LN
                 oBP.CardName = objBussinesPartner.CardName; // Nombre del Socio de Negocio
                 oBP.FederalTaxID = objBussinesPartner.LicTradNum; // NIT
                 oBP.CardType = objBussinesPartner.CardType == "C" ? BoCardTypes.cCustomer ://    Tipo de Socio de Negocio
-                               objBussinesPartner.CardType == "S" ? BoCardTypes.cSupplier :BoCardTypes.cLid; // Tipo de Socio de Negocio
+                               objBussinesPartner.CardType == "S" ? BoCardTypes.cSupplier : BoCardTypes.cLid; // Tipo de Socio de Negocio
                 oBP.GroupCode = objBussinesPartner.GroupCode;
                 //oBP.UserFields.Fields.Item("U_C2410_P001").Value = objBussinesPartner.U_C2410_P001; // Como declarar campo de usuario
-                if(objBussinesPartner.U_C2410_P001 != null && objBussinesPartner.U_C2410_P001 != "") oBP.UserFields.Fields.Item("U_C2410_P001").Value = objBussinesPartner.U_C2410_P001;
+                if (objBussinesPartner.U_C2410_P001 != null && objBussinesPartner.U_C2410_P001 != "") oBP.UserFields.Fields.Item("U_C2410_P001").Value = objBussinesPartner.U_C2410_P001;
                 //oBP.UserFields.Fields.Item("U_C2410_P002").Value = objBussinesPartner.U_C2410_P002; // Como declarar campo de usuario
                 if (objBussinesPartner.U_C2410_P002 != null && objBussinesPartner.U_C2410_P002 != "") oBP.UserFields.Fields.Item("U_C2410_P002").Value = objBussinesPartner.U_C2410_P002; // validar si el campo es nulo o vacio
 
                 foreach (csAddress objAddress in objBussinesPartner.listAddress) // Recorrer lista de direcciones
                 {
-                   
+
                     oBP.Addresses.AddressName = objAddress.Address;
                     if (oBP.Addresses.AddressName2 != null && oBP.Addresses.AddressName != "") oBP.Addresses.AddressName2 = objAddress.Address2; //siempre validar que el campo no vaya vacio o null
                     if (oBP.Addresses.Street != null && oBP.Addresses.Street != "") oBP.Addresses.Street = objAddress.Street;
@@ -277,8 +276,8 @@ namespace LN
                     for (int i = 0; i < oBP.ContactEmployees.Count; i++)
                     {
                         oBP.ContactEmployees.SetCurrentLine(i);
-                        
-                       if( oBP.ContactEmployees.InternalCode != -1)
+
+                        if (oBP.ContactEmployees.InternalCode != -1)
                         {
                             csContacts objContacts = new csContacts();
                             objContacts.Name = oBP.ContactEmployees.Name;
@@ -288,7 +287,7 @@ namespace LN
                             objContacts.Cellolar = oBP.ContactEmployees.MobilePhone;
                             objBusinessPartners.listContacts.Add(objContacts);
                         }
-                        
+
                     }
 
 
@@ -310,7 +309,8 @@ namespace LN
                 Release(oBP);
             }
         }
-        public bool DeleteBussinesPartner (string CardCode){
+        public bool DeleteBussinesPartner(string CardCode)
+        {
             SAPbobsCOM.BusinessPartners oBP = //    Instanciar objeto BusinessPartners
                    (SAPbobsCOM.BusinessPartners)oCompany.GetBusinessObject(BoObjectTypes.oBusinessPartners);// Instanciar objeto BusinessPartners
             try
@@ -350,7 +350,7 @@ namespace LN
                 if (oBP.GetByKey(CardCode))// GetByKey busca el BusinessPartner por el código // Unico Partner
                 {
                     // oBP.CardName = "NUEVO NOMBRE"; // Nombre del Socio de Negocio //Declarar el campo que se va a actualizar
-                   
+
                     iRet = oBP.Update(); // Actualizar bussinesPartner
                     if (iRet == 0)
                     {
@@ -478,9 +478,30 @@ namespace LN
 
         public bool AddMarketingDocument(csDocuments objDocument, ref string stransID) // Agregar documento de marketing // Agregar MarketingDocument //
         {
-            SAPbobsCOM.Documents oDocSAP = oCompany.GetBusinessObject(BoObjectTypes.oPurchaseOrders);
+            SAPbobsCOM.Documents oDocSAP = null;
+          
             try
             {
+
+                switch (objDocument.TipoDoc)
+                {
+                    case "OC": // Orden de compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseOrders);
+                        break;
+                    case "EM": // Entrada de mercancía
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseDeliveryNotes);
+                        break;
+                    case "DC": // Devolución de compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseReturns);
+                        break;
+                    case "FC": // Factura de compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseInvoices);
+                        break;
+                    case "NC": // Nota de crédito de compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseCreditNotes);
+                        break;
+                }
+
                 oDocSAP.CardCode = objDocument.CardCode;
                 if (objDocument.CardName != null && objDocument.CardName != "") oDocSAP.CardName = objDocument.CardName;
                 if (objDocument.DocDate != null && objDocument.DocDate != "") oDocSAP.DocDate = GetFecha(objDocument.DocDate);
@@ -491,7 +512,7 @@ namespace LN
                 if (objDocument.SlpCode != 0) oDocSAP.SalesPersonCode = objDocument.SlpCode;
                 if (objDocument.Comments != null && objDocument.Comments != "") oDocSAP.Comments = objDocument.Comments;
                 if (objDocument.Indicator != null && objDocument.Indicator != "") oDocSAP.Indicator = objDocument.Indicator;
-                if(objDocument.BPLid != 0) oDocSAP.BPL_IDAssignedToInvoice = objDocument.BPLid;
+                if (objDocument.BPLid != 0) oDocSAP.BPL_IDAssignedToInvoice = objDocument.BPLid;
                 if (objDocument.DocType != null && objDocument.DocType != "") oDocSAP.DocType = objDocument.DocType == "I" ? BoDocumentTypes.dDocument_Items : BoDocumentTypes.dDocument_Service;
                 if (objDocument.DocCurr != null && objDocument.DocCurr != "") oDocSAP.DocCurrency = objDocument.DocCurr;
                 oDocSAP.UserFields.Fields.Item("U_U_C2410_P001").Value = objDocument.U_U_C2410_P001;
@@ -543,7 +564,7 @@ namespace LN
                     {
                         oDocSAP.Lines.BinAllocations.Quantity = objBin.Quantity;
                         if (objBin.BinAbsEntry != 0) oDocSAP.Lines.BinAllocations.BinAbsEntry = objBin.BinAbsEntry;
-                        if (objBin.SerialAndBatchNumbersBaseLine != 0) oDocSAP.Lines.BinAllocations.SerialAndBatchNumbersBaseLine = objBin.SerialAndBatchNumbersBaseLine;
+                        oDocSAP.Lines.BinAllocations.SerialAndBatchNumbersBaseLine = objBin.SerialAndBatchNumbersBaseLine;
                         oDocSAP.Lines.BinAllocations.Add(); // Agregar Ubicación
                     }
                     #endregion

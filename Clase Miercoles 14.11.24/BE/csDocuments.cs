@@ -9,6 +9,7 @@ namespace BE
     public class csDocuments
     {
         public string CardCode { get; set; }
+        public string DocNum { get; set; }
         public string CardName { get; set; }
         public string DocDate { get; set; }
         public string DocDueDate { get; set; }
@@ -23,9 +24,10 @@ namespace BE
         public int BPLid { get; set; }
         public string U_U_C2410_P001 { get; set; }
         public string U_U_C2410_P002 { get; set; }
+        public string TipoDoc { get; set; }//Campo NO SAP
 
         public List<csDocumentLines> Lines = new List<csDocumentLines>();
-       
+
     }
     public class csDocumentLines
     {
@@ -46,7 +48,7 @@ namespace BE
         public int BaseEntry { get; set; }
         public int BaseLine { get; set; }
 
-         public List<csDocumentLinesBatch> LinesBatch = new List<csDocumentLinesBatch>();
+        public List<csDocumentLinesBatch> LinesBatch = new List<csDocumentLinesBatch>();
         public List<csDocumentLinesBinAllocations> LinesBinAllocations = new List<csDocumentLinesBinAllocations>();
     }
 

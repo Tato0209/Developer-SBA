@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BE
 {
@@ -10,12 +6,12 @@ namespace BE
     {
         public string CardCode { get; set; } //Codigo de Socio de Negocio
         public string CardName { get; set; }
-        public string CardType  { get; set; }
-        public string LicTradNum  { get; set; }
+        public string CardType { get; set; }
+        public string LicTradNum { get; set; }
         public int GroupCode { get; set; }
         public string U_C2410_P001 { get; set; }
         public string U_C2410_P002 { get; set; }
-       
+
         public List<csAddress> listAddress = new List<csAddress>();  //List of Address // Inicializar en el constructor
 
         public List<csContacts> listContacts = new List<csContacts>(); //List of Contacts // Inicializar en el constructor
@@ -40,6 +36,6 @@ namespace BE
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public string Cellolar { get; set; } 
+        public string Cellolar { get; set; }
     }
 }

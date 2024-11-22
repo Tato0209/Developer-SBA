@@ -57,10 +57,10 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.DocMkt = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNC = new System.Windows.Forms.TextBox();
+            this.txtFC = new System.Windows.Forms.TextBox();
+            this.txtDC = new System.Windows.Forms.TextBox();
+            this.txtEM = new System.Windows.Forms.TextBox();
             this.txtOC = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -354,10 +354,10 @@
             // 
             // DocMkt
             // 
-            this.DocMkt.Controls.Add(this.textBox5);
-            this.DocMkt.Controls.Add(this.textBox4);
-            this.DocMkt.Controls.Add(this.textBox3);
-            this.DocMkt.Controls.Add(this.textBox2);
+            this.DocMkt.Controls.Add(this.txtNC);
+            this.DocMkt.Controls.Add(this.txtFC);
+            this.DocMkt.Controls.Add(this.txtDC);
+            this.DocMkt.Controls.Add(this.txtEM);
             this.DocMkt.Controls.Add(this.txtOC);
             this.DocMkt.Controls.Add(this.button13);
             this.DocMkt.Controls.Add(this.button12);
@@ -371,33 +371,33 @@
             this.DocMkt.Text = "Documentos MKT";
             this.DocMkt.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // txtNC
             // 
-            this.textBox5.Location = new System.Drawing.Point(176, 195);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(130, 20);
-            this.textBox5.TabIndex = 9;
+            this.txtNC.Location = new System.Drawing.Point(176, 195);
+            this.txtNC.Name = "txtNC";
+            this.txtNC.Size = new System.Drawing.Size(130, 20);
+            this.txtNC.TabIndex = 9;
             // 
-            // textBox4
+            // txtFC
             // 
-            this.textBox4.Location = new System.Drawing.Point(176, 152);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(130, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtFC.Location = new System.Drawing.Point(176, 152);
+            this.txtFC.Name = "txtFC";
+            this.txtFC.Size = new System.Drawing.Size(130, 20);
+            this.txtFC.TabIndex = 8;
             // 
-            // textBox3
+            // txtDC
             // 
-            this.textBox3.Location = new System.Drawing.Point(176, 112);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(130, 20);
-            this.textBox3.TabIndex = 7;
+            this.txtDC.Location = new System.Drawing.Point(176, 112);
+            this.txtDC.Name = "txtDC";
+            this.txtDC.Size = new System.Drawing.Size(130, 20);
+            this.txtDC.TabIndex = 7;
             // 
-            // textBox2
+            // txtEM
             // 
-            this.textBox2.Location = new System.Drawing.Point(176, 73);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(130, 20);
-            this.textBox2.TabIndex = 6;
+            this.txtEM.Location = new System.Drawing.Point(176, 73);
+            this.txtEM.Name = "txtEM";
+            this.txtEM.Size = new System.Drawing.Size(130, 20);
+            this.txtEM.TabIndex = 6;
             // 
             // txtOC
             // 
@@ -412,8 +412,9 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(150, 23);
             this.button13.TabIndex = 4;
-            this.button13.Text = "button13";
+            this.button13.Text = "Nota de Credito";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button12
             // 
@@ -421,8 +422,9 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(150, 23);
             this.button12.TabIndex = 3;
-            this.button12.Text = "button12";
+            this.button12.Text = "Factura Compra";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
@@ -430,8 +432,9 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(150, 23);
             this.button11.TabIndex = 2;
-            this.button11.Text = "button11";
+            this.button11.Text = "Devolucion";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // btnEM
             // 
@@ -506,10 +509,10 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TabPage DocMkt;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNC;
+        private System.Windows.Forms.TextBox txtFC;
+        private System.Windows.Forms.TextBox txtDC;
+        private System.Windows.Forms.TextBox txtEM;
         private System.Windows.Forms.TextBox txtOC;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button12;

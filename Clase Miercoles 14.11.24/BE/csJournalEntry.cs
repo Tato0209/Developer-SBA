@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BE
 {
@@ -19,7 +15,7 @@ namespace BE
         public string Project { get; set; }
         public string TransCode { get; set; }
 
-        public List<csJournalEntryLines>Lines = new List<csJournalEntryLines>();
+        public List<csJournalEntryLines> Lines = new List<csJournalEntryLines>();
     }
     public class csJournalEntryLines
     {
