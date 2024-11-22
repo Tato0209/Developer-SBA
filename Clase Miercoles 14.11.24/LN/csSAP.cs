@@ -500,6 +500,29 @@ namespace LN
                     case "NC": // Nota de crédito de compra
                         oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseCreditNotes);
                         break;
+                    //******* VENTAS ********
+                    case "OV": //Orden de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oOrders);
+                        break;
+                    case "EV": //Entrada de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oDeliveryNotes);
+                        break;
+                    case "DV": //Devolucion de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oReturns);
+                        break;
+                    case "FV": //Factura de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oInvoices);
+                        break;
+                    case "NV": //Nota de Credito de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oCreditNotes);
+                        break;
+                    //******* INVENTARIOS ********
+                    case "EI": //Entrada de Inventario
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oInventoryGenEntry);
+                        break;
+                    case "SI": //Salida de Inventario
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oInventoryGenExit);
+                        break;
                 }
 
                 oDocSAP.CardCode = objDocument.CardCode;
