@@ -624,7 +624,5 @@ namespace LN
         {
             return DateTime.Parse(sFecha.Substring(6, 2) + "/" + sFecha.Substring(4, 2) + "/" + sFecha.Substring(0, 4)); // Convertir fecha // fecha en formato AAAAMMDD
         }
-
-
     }
 }
