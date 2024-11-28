@@ -422,7 +422,7 @@ namespace GUI
                 oLine.LinesBatch.Add(oBatch);
                 #endregion
 
-                #region Ubicaciones
+              /*  #region Ubicaciones
 
                 oBin = new csDocumentLinesBinAllocations();
                 oBin.BinAbsEntry = 2;
@@ -435,7 +435,7 @@ namespace GUI
                 oBin.Quantity = 5;
                 oBin.SerialAndBatchNumbersBaseLine = 1;
                 oLine.LinesBinAllocations.Add(oBin);
-                #endregion
+                #endregion*/
 
                 oDoc.Lines.Add(oLine); //Add Linea 1
                 string stransID = ""; //ID del Documento
@@ -636,6 +636,328 @@ namespace GUI
             {
                 MessageBox.Show(ex.Message);
 
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                csDocumentLinesBinAllocations oBin;
+                csDocumentLinesBatch oBatch;
+                csDocumentLines oLine;
+
+                csDocuments oDoc = new csDocuments();
+                oDoc.DocDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.TaxDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.Comments = "Created by SDK";
+               // oDoc.BPLid = 1;
+                oDoc.U_U_C2410_P001 = "Prueba1";
+                oDoc.U_U_C2410_P002 = "Prueba2";
+                oDoc.TipoDoc = "EI";
+
+                oLine = new csDocumentLines();
+                oLine.ItemCode = "0050390001";
+                oLine.Quantity = 10;
+                oLine.UnitPrice = 122.50;
+                oLine.WhsCode = "M101";
+                oLine.AcctCode = "4115101";
+                oLine.Project = "CRIS4";
+                oLine.OcrCode1 = "TRANS";
+                oLine.OcrCode2 = "CRIS4";
+                oLine.OcrCode3 = "MANT";
+                oLine.OcrCode4 = "NO-APLI";
+                oDoc.Lines.Add(oLine);
+
+                oLine = new csDocumentLines();
+                oLine.ItemCode = "0050390002";
+                oLine.Quantity = 20;
+                oLine.UnitPrice = 122.50;
+                oLine.WhsCode = "A001";
+                oLine.AcctCode = "4115102";
+                oLine.Project = "CRIS4";
+                oLine.OcrCode1 = "TRANS";
+                oLine.OcrCode2 = "CRIS4";
+                oLine.OcrCode3 = "MANT";
+                oLine.OcrCode4 = "NO-APLI";
+
+                #region Lotes
+                oBatch = new csDocumentLinesBatch();
+                oBatch.BatchNumber = "1120002";
+                oBatch.Quantity = 10;
+                oBatch.MnfDate = "20240901";
+                oBatch.ExpDate = "20250731";
+                oLine.LinesBatch.Add(oBatch);
+
+                oBatch = new csDocumentLinesBatch();
+                oBatch.BatchNumber = "1120003";
+                oBatch.Quantity = 10;
+                oBatch.MnfDate = "20240901";
+                oBatch.ExpDate = "20250731";
+                oLine.LinesBatch.Add(oBatch);
+                #endregion
+
+               /* #region Ubicaciones
+
+                //Lote 0
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 2;
+                oBin.Quantity = 3;
+                oBin.SerialAndbatchNumbersBaseLine = 0;
+                oLine.ListBinAllocation.Add(oBin);
+
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 60;
+                oBin.Quantity = 7;
+                oBin.SerialAndbatchNumbersBaseLine = 0;
+                oLine.ListBinAllocation.Add(oBin);
+
+                //Lote 1
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 3;
+                oBin.Quantity = 10;
+                oBin.SerialAndbatchNumbersBaseLine = 1;
+                oLine.ListBinAllocation.Add(oBin);
+                #endregion */
+
+                oDoc.Lines.Add(oLine);
+
+                string sDocEntry = "";
+                if (oSAP.AddMarketingDocument(oDoc, ref sDocEntry))
+                {
+                    this.txtEI.Text = sDocEntry;
+                    MessageBox.Show("Documento creado con éxito");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                csDocumentLinesBinAllocations oBin;
+                csDocumentLinesBatch oBatch;
+                csDocumentLines oLine;
+
+                csDocuments oDoc = new csDocuments();
+                oDoc.DocDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.TaxDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.Comments = "Created by SDK";
+               // oDoc.BPLid = 1;
+                oDoc.U_U_C2410_P001 = "Prueba1";
+                oDoc.U_U_C2410_P002 = "Prueba2";
+                oDoc.TipoDoc = "EI";
+
+                oLine = new csDocumentLines();
+                oLine.ItemCode = "0050390001";
+                oLine.Quantity = 10;
+                oLine.UnitPrice = 122.50;
+                oLine.WhsCode = "A001";
+                oLine.AcctCode = "4115101";
+                oLine.Project = "CRIS4";
+                oLine.OcrCode1 = "TRANS";
+                oLine.OcrCode2 = "CRIS4";
+                oLine.OcrCode3 = "MANT";
+                oLine.OcrCode4 = "NO-APLI";
+                oDoc.Lines.Add(oLine);
+
+                oLine = new csDocumentLines();
+                oLine.ItemCode = "0050390002";
+                oLine.Quantity = 20;
+                oLine.UnitPrice = 122.50;
+                oLine.WhsCode = "A001";
+                oLine.AcctCode = "4115102";
+                oLine.Project = "CRIS4";
+                oLine.OcrCode1 = "TRANS";
+                oLine.OcrCode2 = "CRIS4";
+                oLine.OcrCode3 = "MANT";
+                oLine.OcrCode4 = "NO-APLI";
+
+                #region Lotes
+                oBatch = new csDocumentLinesBatch();
+                oBatch.BatchNumber = "1120002";
+                oBatch.Quantity = 10;
+                oBatch.MnfDate = "20240901";
+                oBatch.ExpDate = "20250731";
+                oLine.LinesBatch.Add(oBatch);
+
+                oBatch = new csDocumentLinesBatch();
+                oBatch.BatchNumber = "1120003";
+                oBatch.Quantity = 10;
+                oBatch.MnfDate = "20240901";
+                oBatch.ExpDate = "20250731";
+                oLine.LinesBatch.Add(oBatch);
+                #endregion
+
+                /* #region Ubicaciones
+
+                 //Lote 0
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 2;
+                 oBin.Quantity = 3;
+                 oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oLine.ListBinAllocation.Add(oBin);
+
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 60;
+                 oBin.Quantity = 7;
+                 oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oLine.ListBinAllocation.Add(oBin);
+
+                 //Lote 1
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 3;
+                 oBin.Quantity = 10;
+                 oBin.SerialAndbatchNumbersBaseLine = 1;
+                 oLine.ListBinAllocation.Add(oBin);
+                 #endregion */
+
+                oDoc.Lines.Add(oLine);
+
+                string sDocEntry = "";
+                if (oSAP.AddMarketingDocument(oDoc, ref sDocEntry))
+                {
+                    this.txtSI.Text = sDocEntry;
+                    MessageBox.Show("Documento creado con éxito");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Inventario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                csDocumentLinesBinAllocations oBin;
+                csDocumentLinesBatch oBatch;
+                csDocumentLines oLine;
+
+                csDocuments oDoc = new csDocuments();
+                oDoc.DocDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.TaxDate = DateTime.Now.ToString("yyyyMMdd");
+                oDoc.Comments = "Created by SDK";
+                oDoc.BPLid = 1;
+                oDoc.U_U_C2410_P001 = "Prueba1";
+                oDoc.U_U_C2410_P002 = "Prueba2";
+                oDoc.Filler = "A001";
+                oDoc.ToWhsCode = "M101";
+
+                oLine = new csDocumentLines();
+                oLine.ItemCode = "0050390001";
+                oLine.Quantity = 5;
+                //oLine.UnitPrice = 122.50;
+                oLine.FromWhsCode = "A001";
+                oLine.WhsCode = "M101";
+                oLine.Project = "CRIS4";
+                oLine.OcrCode1 = "TRANS";
+                oLine.OcrCode2 = "CRIS4";
+                oLine.OcrCode3 = "MANT";
+                oLine.OcrCode4 = "NO-APLI";
+
+               /* oBin = new csDocumentLinesBinAllocations();
+                oBin.BinAbsEntry = 57;
+                oBin.Quantity = 5;
+                //oBin.SerialAndbatchNumbersBaseLine = 0;
+                oBin.Direction = 1;
+                oLine.LinesBinAllocations.Add(oBin);*/
+
+
+                oDoc.Lines.Add(oLine);
+
+                oLine = new csDocumentLines();
+                oLine.ItemCode = "0050390002";
+                oLine.Quantity = 10;
+                oLine.FromWhsCode = "05";
+                oLine.WhsCode = "05"; ;
+                oLine.Project = "CRIS4";
+                oLine.OcrCode1 = "TRANS";
+                oLine.OcrCode2 = "CRIS4";
+                oLine.OcrCode3 = "MANT";
+                oLine.OcrCode4 = "NO-APLI";
+
+                #region Lotes
+                oBatch = new csDocumentLinesBatch();
+                oBatch.BatchNumber = "1120002";
+                oBatch.Quantity = 5;
+                oLine.LinesBatch.Add(oBatch);
+
+                oBatch = new csDocumentLinesBatch();
+                oBatch.BatchNumber = "1120003";
+                oBatch.Quantity = 5;
+                oLine.LinesBatch.Add(oBatch);
+                #endregion
+
+               /* #region Ubicaciones
+
+                //Lote 0
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 2;
+                oBin.Quantity = 2;
+                oBin.SerialAndbatchNumbersBaseLine = 0;
+                oBin.Direction = 2;
+                oLine.ListBinAllocation.Add(oBin);
+
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 60;
+                oBin.Quantity = 3;
+                oBin.SerialAndbatchNumbersBaseLine = 0;
+                oBin.Direction = 2;
+                oLine.ListBinAllocation.Add(oBin);
+
+                //Llegada
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 50;
+                oBin.Quantity = 5;
+                oBin.SerialAndbatchNumbersBaseLine = 0;
+                oBin.Direction = 1;
+                oLine.ListBinAllocation.Add(oBin);
+
+                //Lote 1
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 3;
+                oBin.Quantity = 5;
+                oBin.SerialAndbatchNumbersBaseLine = 1;
+                oBin.Direction = 2;
+                oLine.ListBinAllocation.Add(oBin);
+
+                oBin = new csDocumentLinesBinAllocation();
+                oBin.BinAbsEntry = 70;
+                oBin.Quantity = 5;
+                oBin.SerialAndbatchNumbersBaseLine = 1;
+                oBin.Direction = 1;
+                oLine.ListBinAllocation.Add(oBin);
+                #endregion*/
+
+                oDoc.Lines.Add(oLine);
+
+                string sDocEntry = "";
+                if (oSAP.AddStockTransfers(oDoc, ref sDocEntry))
+                {
+                    this.txtTI.Text = sDocEntry;
+                    MessageBox.Show("Documento creado con éxito");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

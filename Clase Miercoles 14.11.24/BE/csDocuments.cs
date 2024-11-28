@@ -26,6 +26,11 @@ namespace BE
         public string U_U_C2410_P002 { get; set; }
         public string TipoDoc { get; set; }//Campo NO SAP
 
+        //Para transferencias
+        public string Filler { get; set; }
+        public string ToWhsCode { get; set; }
+
+
         public List<csDocumentLines> Lines = new List<csDocumentLines>();
 
     }
@@ -35,10 +40,16 @@ namespace BE
         public string Dscrption { get; set; }
         public string AcctCode { get; set; }
         public double Quantity { get; set; }
+
+        //Para transferencias
+        public string FromWhsCode { get; set; }
+
+
         public string WhsCode { get; set; }
         public double UnitPrice { get; set; }
         public double DiscPrcnt { get; set; }
         public string Project { get; set; }
+        public string TaxCode { get; set; }
         public string OcrCode1 { get; set; }
         public string OcrCode2 { get; set; }
         public string OcrCode3 { get; set; }
@@ -68,5 +79,7 @@ namespace BE
         public int BinAbsEntry { get; set; }
         public double Quantity { get; set; }
         public int SerialAndBatchNumbersBaseLine { get; set; }
+
+        public int? Direction { get; set; } //1: ToWareHouse, 2: FromWareHouse
     }
 }

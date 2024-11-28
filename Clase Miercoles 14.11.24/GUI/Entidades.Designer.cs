@@ -67,11 +67,19 @@
             this.button11 = new System.Windows.Forms.Button();
             this.btnEM = new System.Windows.Forms.Button();
             this.btnOC = new System.Windows.Forms.Button();
+            this.Inventario = new System.Windows.Forms.TabPage();
+            this.txtTI = new System.Windows.Forms.TextBox();
+            this.button14 = new System.Windows.Forms.Button();
+            this.txtSI = new System.Windows.Forms.TextBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.txtEI = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Articulo.SuspendLayout();
             this.SocioNegocio.SuspendLayout();
             this.Asiento.SuspendLayout();
             this.DocMkt.SuspendLayout();
+            this.Inventario.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,6 +88,7 @@
             this.tabControl1.Controls.Add(this.SocioNegocio);
             this.tabControl1.Controls.Add(this.Asiento);
             this.tabControl1.Controls.Add(this.DocMkt);
+            this.tabControl1.Controls.Add(this.Inventario);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -457,6 +466,74 @@
             this.btnOC.UseVisualStyleBackColor = true;
             this.btnOC.Click += new System.EventHandler(this.btnOC_Click);
             // 
+            // Inventario
+            // 
+            this.Inventario.Controls.Add(this.txtTI);
+            this.Inventario.Controls.Add(this.button14);
+            this.Inventario.Controls.Add(this.txtSI);
+            this.Inventario.Controls.Add(this.button10);
+            this.Inventario.Controls.Add(this.txtEI);
+            this.Inventario.Controls.Add(this.button9);
+            this.Inventario.Location = new System.Drawing.Point(4, 22);
+            this.Inventario.Name = "Inventario";
+            this.Inventario.Size = new System.Drawing.Size(752, 350);
+            this.Inventario.TabIndex = 4;
+            this.Inventario.Text = "Inventario";
+            this.Inventario.UseVisualStyleBackColor = true;
+            this.Inventario.Click += new System.EventHandler(this.Inventario_Click);
+            // 
+            // txtTI
+            // 
+            this.txtTI.Location = new System.Drawing.Point(208, 127);
+            this.txtTI.Name = "txtTI";
+            this.txtTI.Size = new System.Drawing.Size(130, 20);
+            this.txtTI.TabIndex = 11;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(52, 127);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(150, 23);
+            this.button14.TabIndex = 10;
+            this.button14.Text = "Crear Transferencia";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // txtSI
+            // 
+            this.txtSI.Location = new System.Drawing.Point(208, 76);
+            this.txtSI.Name = "txtSI";
+            this.txtSI.Size = new System.Drawing.Size(130, 20);
+            this.txtSI.TabIndex = 9;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(52, 76);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(150, 23);
+            this.button10.TabIndex = 8;
+            this.button10.Text = "Crear Salida de Inventario";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // txtEI
+            // 
+            this.txtEI.Location = new System.Drawing.Point(208, 29);
+            this.txtEI.Name = "txtEI";
+            this.txtEI.Size = new System.Drawing.Size(130, 20);
+            this.txtEI.TabIndex = 7;
+            this.txtEI.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(52, 29);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(150, 23);
+            this.button9.TabIndex = 6;
+            this.button9.Text = "Crear Entrada de Inventario";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Entidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,6 +551,8 @@
             this.Asiento.PerformLayout();
             this.DocMkt.ResumeLayout(false);
             this.DocMkt.PerformLayout();
+            this.Inventario.ResumeLayout(false);
+            this.Inventario.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -519,5 +598,12 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btnEM;
         private System.Windows.Forms.Button btnOC;
+        private System.Windows.Forms.TabPage Inventario;
+        private System.Windows.Forms.TextBox txtEI;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox txtTI;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.TextBox txtSI;
+        private System.Windows.Forms.Button button10;
     }
 }
