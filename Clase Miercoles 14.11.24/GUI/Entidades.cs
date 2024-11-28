@@ -424,24 +424,6 @@ namespace GUI
                 oLine.LinesBatch.Add(oBatch);
                 #endregion
 
-<<<<<<< HEAD
-              /*  #region Ubicaciones
-=======
-                /*#region Ubicaciones
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
-
-                oBin = new csDocumentLinesBinAllocations();
-                oBin.BinAbsEntry = 2;
-                oBin.Quantity = 5;
-                oBin.SerialAndBatchNumbersBaseLine = 0;
-                oLine.LinesBinAllocations.Add(oBin);
-
-                oBin = new csDocumentLinesBinAllocations();
-                oBin.BinAbsEntry = 2;
-                oBin.Quantity = 5;
-                oBin.SerialAndBatchNumbersBaseLine = 1;
-                oLine.LinesBinAllocations.Add(oBin);
-                #endregion*/
 
                 oDoc.Lines.Add(oLine); //Add Linea 1
                 string stransID = ""; //ID del Documento
@@ -735,7 +717,7 @@ namespace GUI
         {
             try
             {
-<<<<<<< HEAD
+
                 csDocumentLinesBinAllocations oBin;
                 csDocumentLinesBatch oBatch;
                 csDocumentLines oLine;
@@ -760,7 +742,7 @@ namespace GUI
                 oLine.OcrCode2 = "CRIS4";
                 oLine.OcrCode3 = "MANT";
                 oLine.OcrCode4 = "NO-APLI";
-<<<<<<< HEAD
+
                 oDoc.Lines.Add(oLine);
 
                 oLine = new csDocumentLines();
@@ -769,16 +751,12 @@ namespace GUI
                 oLine.UnitPrice = 122.50;
                 oLine.WhsCode = "A001";
                 oLine.AcctCode = "4115102";
-=======
-                //oLine.OcrCode5 = "";
-
                 oLine = new csDocumentLines(); //Linea 1
                 oLine.ItemCode = "0050390002";
                 oLine.Quantity = 20;
                 oLine.WhsCode = "A001";
                 oLine.UnitPrice = 100.00;
                 oLine.AcctCode = "4115101";
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
                 oLine.Project = "CRIS4";
                 oLine.OcrCode1 = "TRANS";
                 oLine.OcrCode2 = "CRIS4";
@@ -790,6 +768,12 @@ namespace GUI
                 oBatch.BatchNumber = "1120002";
                 oBatch.Quantity = 10;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                //oBatch.MnfSerial = "";
+                //oBatch.LotNumber = "";
+                //oBatch.InDate =
+>>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
 =======
                 //oBatch.MnfSerial = "";
                 //oBatch.LotNumber = "";
@@ -803,6 +787,12 @@ namespace GUI
                 oBatch.BatchNumber = "1120003";
                 oBatch.Quantity = 10;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                //oBatch.MnfSerial = "";
+                //oBatch.LotNumber = "";
+                //oBatch.InDate =
+>>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
 =======
                 //oBatch.MnfSerial = "";
                 //oBatch.LotNumber = "";
@@ -812,7 +802,7 @@ namespace GUI
                 oBatch.ExpDate = "20250731";
                 oLine.LinesBatch.Add(oBatch);
                 #endregion
-<<<<<<< HEAD
+
 
                /* #region Ubicaciones
 
@@ -836,9 +826,6 @@ namespace GUI
                 oBin.SerialAndbatchNumbersBaseLine = 1;
                 oLine.ListBinAllocation.Add(oBin);
                 #endregion */
-
-=======
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
                 oDoc.Lines.Add(oLine);
 
                 string sDocEntry = "";
@@ -847,8 +834,6 @@ namespace GUI
                     this.txtEI.Text = sDocEntry;
                     MessageBox.Show("Documento creado con éxito");
                 }
-<<<<<<< HEAD
-
             }
             catch (Exception ex)
             {
@@ -1074,8 +1059,6 @@ namespace GUI
                     this.txtTI.Text = sDocEntry;
                     MessageBox.Show("Documento creado con éxito");
                 }
-=======
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
             }
             catch (Exception ex)
             {
