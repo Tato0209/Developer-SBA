@@ -1,10 +1,7 @@
 ﻿using BE;
 using LN;
 using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
@@ -518,20 +515,20 @@ namespace GUI
                 oBatch.ExpDate = "20250731";
                 oLine.LinesBatch.Add(oBatch);
                 #endregion
-              /*  #region Ubicaciones
+                /*  #region Ubicaciones
 
-                oBin = new csDocumentLinesBinAllocations();
-                oBin.BinAbsEntry = 2;
-                oBin.Quantity = 5;
-                oBin.SerialAndBatchNumbersBaseLine = 0;
-                oLine.LinesBinAllocations.Add(oBin);
+                  oBin = new csDocumentLinesBinAllocations();
+                  oBin.BinAbsEntry = 2;
+                  oBin.Quantity = 5;
+                  oBin.SerialAndBatchNumbersBaseLine = 0;
+                  oLine.LinesBinAllocations.Add(oBin);
 
-                oBin = new csDocumentLinesBinAllocations();
-                oBin.BinAbsEntry = 2;
-                oBin.Quantity = 5;
-                oBin.SerialAndBatchNumbersBaseLine = 1;
-                oLine.LinesBinAllocations.Add(oBin);
-                #endregion*/
+                  oBin = new csDocumentLinesBinAllocations();
+                  oBin.BinAbsEntry = 2;
+                  oBin.Quantity = 5;
+                  oBin.SerialAndBatchNumbersBaseLine = 1;
+                  oLine.LinesBinAllocations.Add(oBin);
+                  #endregion*/
 
                 oDoc.Lines.Add(oLine); //Add Linea 1
                 string stransID = ""; //ID del Documento
@@ -726,7 +723,7 @@ namespace GUI
                 oDoc.DocDate = DateTime.Now.ToString("yyyyMMdd");
                 oDoc.TaxDate = DateTime.Now.ToString("yyyyMMdd");
                 oDoc.Comments = "Created by SDK";
-               // oDoc.BPLid = 1;
+                // oDoc.BPLid = 1;
                 oDoc.U_U_C2410_P001 = "Prueba1";
                 oDoc.U_U_C2410_P002 = "Prueba2";
                 oDoc.TipoDoc = "EI";
@@ -767,18 +764,6 @@ namespace GUI
                 oBatch = new csDocumentLinesBatch();
                 oBatch.BatchNumber = "1120002";
                 oBatch.Quantity = 10;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                //oBatch.MnfSerial = "";
-                //oBatch.LotNumber = "";
-                //oBatch.InDate =
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
-=======
-                //oBatch.MnfSerial = "";
-                //oBatch.LotNumber = "";
-                //oBatch.InDate =
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
                 oBatch.MnfDate = "20240901";
                 oBatch.ExpDate = "20250731";
                 oLine.LinesBatch.Add(oBatch);
@@ -786,46 +771,34 @@ namespace GUI
                 oBatch = new csDocumentLinesBatch();
                 oBatch.BatchNumber = "1120003";
                 oBatch.Quantity = 10;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                //oBatch.MnfSerial = "";
-                //oBatch.LotNumber = "";
-                //oBatch.InDate =
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
-=======
-                //oBatch.MnfSerial = "";
-                //oBatch.LotNumber = "";
-                //oBatch.InDate =
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
                 oBatch.MnfDate = "20240901";
                 oBatch.ExpDate = "20250731";
                 oLine.LinesBatch.Add(oBatch);
                 #endregion
 
 
-               /* #region Ubicaciones
+                /* #region Ubicaciones
 
-                //Lote 0
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 2;
-                oBin.Quantity = 3;
-                oBin.SerialAndbatchNumbersBaseLine = 0;
-                oLine.ListBinAllocation.Add(oBin);
+                 //Lote 0
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 2;
+                 oBin.Quantity = 3;
+                 oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oLine.ListBinAllocation.Add(oBin);
 
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 60;
-                oBin.Quantity = 7;
-                oBin.SerialAndbatchNumbersBaseLine = 0;
-                oLine.ListBinAllocation.Add(oBin);
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 60;
+                 oBin.Quantity = 7;
+                 oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oLine.ListBinAllocation.Add(oBin);
 
-                //Lote 1
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 3;
-                oBin.Quantity = 10;
-                oBin.SerialAndbatchNumbersBaseLine = 1;
-                oLine.ListBinAllocation.Add(oBin);
-                #endregion */
+                 //Lote 1
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 3;
+                 oBin.Quantity = 10;
+                 oBin.SerialAndbatchNumbersBaseLine = 1;
+                 oLine.ListBinAllocation.Add(oBin);
+                 #endregion */
                 oDoc.Lines.Add(oLine);
 
                 string sDocEntry = "";
@@ -852,7 +825,7 @@ namespace GUI
                 oDoc.DocDate = DateTime.Now.ToString("yyyyMMdd");
                 oDoc.TaxDate = DateTime.Now.ToString("yyyyMMdd");
                 oDoc.Comments = "Created by SDK";
-               // oDoc.BPLid = 1;
+                // oDoc.BPLid = 1;
                 oDoc.U_U_C2410_P001 = "Prueba1";
                 oDoc.U_U_C2410_P002 = "Prueba2";
                 oDoc.TipoDoc = "EI";
@@ -977,12 +950,12 @@ namespace GUI
                 oLine.OcrCode3 = "MANT";
                 oLine.OcrCode4 = "NO-APLI";
 
-               /* oBin = new csDocumentLinesBinAllocations();
-                oBin.BinAbsEntry = 57;
-                oBin.Quantity = 5;
-                //oBin.SerialAndbatchNumbersBaseLine = 0;
-                oBin.Direction = 1;
-                oLine.LinesBinAllocations.Add(oBin);*/
+                /* oBin = new csDocumentLinesBinAllocations();
+                 oBin.BinAbsEntry = 57;
+                 oBin.Quantity = 5;
+                 //oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oBin.Direction = 1;
+                 oLine.LinesBinAllocations.Add(oBin);*/
 
 
                 oDoc.Lines.Add(oLine);
@@ -1010,46 +983,46 @@ namespace GUI
                 oLine.LinesBatch.Add(oBatch);
                 #endregion
 
-               /* #region Ubicaciones
+                /* #region Ubicaciones
 
-                //Lote 0
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 2;
-                oBin.Quantity = 2;
-                oBin.SerialAndbatchNumbersBaseLine = 0;
-                oBin.Direction = 2;
-                oLine.ListBinAllocation.Add(oBin);
+                 //Lote 0
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 2;
+                 oBin.Quantity = 2;
+                 oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oBin.Direction = 2;
+                 oLine.ListBinAllocation.Add(oBin);
 
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 60;
-                oBin.Quantity = 3;
-                oBin.SerialAndbatchNumbersBaseLine = 0;
-                oBin.Direction = 2;
-                oLine.ListBinAllocation.Add(oBin);
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 60;
+                 oBin.Quantity = 3;
+                 oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oBin.Direction = 2;
+                 oLine.ListBinAllocation.Add(oBin);
 
-                //Llegada
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 50;
-                oBin.Quantity = 5;
-                oBin.SerialAndbatchNumbersBaseLine = 0;
-                oBin.Direction = 1;
-                oLine.ListBinAllocation.Add(oBin);
+                 //Llegada
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 50;
+                 oBin.Quantity = 5;
+                 oBin.SerialAndbatchNumbersBaseLine = 0;
+                 oBin.Direction = 1;
+                 oLine.ListBinAllocation.Add(oBin);
 
-                //Lote 1
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 3;
-                oBin.Quantity = 5;
-                oBin.SerialAndbatchNumbersBaseLine = 1;
-                oBin.Direction = 2;
-                oLine.ListBinAllocation.Add(oBin);
+                 //Lote 1
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 3;
+                 oBin.Quantity = 5;
+                 oBin.SerialAndbatchNumbersBaseLine = 1;
+                 oBin.Direction = 2;
+                 oLine.ListBinAllocation.Add(oBin);
 
-                oBin = new csDocumentLinesBinAllocation();
-                oBin.BinAbsEntry = 70;
-                oBin.Quantity = 5;
-                oBin.SerialAndbatchNumbersBaseLine = 1;
-                oBin.Direction = 1;
-                oLine.ListBinAllocation.Add(oBin);
-                #endregion*/
+                 oBin = new csDocumentLinesBinAllocation();
+                 oBin.BinAbsEntry = 70;
+                 oBin.Quantity = 5;
+                 oBin.SerialAndbatchNumbersBaseLine = 1;
+                 oBin.Direction = 1;
+                 oLine.ListBinAllocation.Add(oBin);
+                 #endregion*/
 
                 oDoc.Lines.Add(oLine);
 

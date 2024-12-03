@@ -34,3 +34,9 @@ E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Deb
 E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Debug\BE.csproj.CoreCompileInputs.cache
 E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Debug\BE.dll
 E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Debug\BE.pdb
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Clase Miercoles 14.11.24\BE\bin\x64\Debug\BE.dll
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Clase Miercoles 14.11.24\BE\bin\x64\Debug\BE.pdb
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Debug\BE.csproj.AssemblyReference.cache
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Debug\BE.csproj.CoreCompileInputs.cache
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Debug\BE.dll
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Clase Miercoles 14.11.24\BE\obj\x64\Debug\BE.pdb

@@ -62,7 +62,10 @@ namespace LN
                 throw ex;
             }
         }
-
+        public void Release(object obj)
+        {
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+        }
         public bool AddItems(csItems objItems)
         {
             SAPbobsCOM.Items oItems =
@@ -102,7 +105,7 @@ namespace LN
                 Release(oItems);// Liberar objeto Items
             }
         }
-        public bool GetItems(ref csItems objItems)
+       public bool GetItems(ref csItems objItems)
         {
             SAPbobsCOM.Items oItems =
                       (SAPbobsCOM.Items)oCompany.GetBusinessObject(BoObjectTypes.oItems);
@@ -136,7 +139,6 @@ namespace LN
                 Release(oItems);
             }
         }
-
         public bool DeleteItems(string ItemCODE) // Eliminar Item
         {
             SAPbobsCOM.Items oItems = //    Instanciar objeto Items
@@ -371,7 +373,6 @@ namespace LN
                 Release(oBP);// Liberar objeto BusinessPartners
             }
         }
-
         public bool AddJournalEntries(csJournalEntry objJournalEntry, ref string sTransID) // Agregar asiento contable // Agregar JournalEntries //sTransID = ID de la transacción
         {
             SAPbobsCOM.JournalEntries oJE = (SAPbobsCOM.JournalEntries)oCompany.GetBusinessObject(BoObjectTypes.oJournalEntries);
@@ -472,7 +473,6 @@ namespace LN
                 Release(oJE);
             }
         }
-
         public bool AddMarketingDocument(csDocuments objDoc, ref string sDocEntry)
         {
             SAPbobsCOM.Documents oDocSAP = null;
@@ -612,7 +612,6 @@ namespace LN
                 Release(oDocSAP);
             }
         }
-
         public bool AddStockTransfers(csDocuments objDoc, ref string sDocEntry)
         {
             SAPbobsCOM.StockTransfer oDocSAP = null;
@@ -711,9 +710,6 @@ namespace LN
         {
             return DateTime.Parse(sFecha.Substring(6, 2) + "/" + sFecha.Substring(4, 2) + "/" + sFecha.Substring(0, 4)); // Convertir fecha // fecha en formato AAAAMMDD
         }
-        public void Release(object obj)
-        {
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-        }
+       
     }
 }

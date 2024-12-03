@@ -67,7 +67,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.btnEM = new System.Windows.Forms.Button();
             this.btnOC = new System.Windows.Forms.Button();
-<<<<<<< HEAD
             this.Inventario = new System.Windows.Forms.TabPage();
             this.txtTI = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
@@ -75,25 +74,12 @@
             this.button10 = new System.Windows.Forms.Button();
             this.txtEI = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
-=======
-            this.DocInv = new System.Windows.Forms.TabPage();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.btnTI = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnSI = new System.Windows.Forms.Button();
-            this.txtEI = new System.Windows.Forms.TextBox();
-            this.btnEI = new System.Windows.Forms.Button();
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
             this.tabControl1.SuspendLayout();
             this.Articulo.SuspendLayout();
             this.SocioNegocio.SuspendLayout();
             this.Asiento.SuspendLayout();
             this.DocMkt.SuspendLayout();
-<<<<<<< HEAD
             this.Inventario.SuspendLayout();
-=======
-            this.DocInv.SuspendLayout();
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
             this.SuspendLayout();
             // 
             // tabControl1
@@ -102,14 +88,8 @@
             this.tabControl1.Controls.Add(this.SocioNegocio);
             this.tabControl1.Controls.Add(this.Asiento);
             this.tabControl1.Controls.Add(this.DocMkt);
-<<<<<<< HEAD
             this.tabControl1.Controls.Add(this.Inventario);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
-=======
-            this.tabControl1.Controls.Add(this.DocInv);
-            this.tabControl1.Location = new System.Drawing.Point(13, 13);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1013, 463);
@@ -524,7 +504,6 @@
             this.btnOC.UseVisualStyleBackColor = true;
             this.btnOC.Click += new System.EventHandler(this.btnOC_Click);
             // 
-<<<<<<< HEAD
             // Inventario
             // 
             this.Inventario.Controls.Add(this.txtTI);
@@ -533,9 +512,9 @@
             this.Inventario.Controls.Add(this.button10);
             this.Inventario.Controls.Add(this.txtEI);
             this.Inventario.Controls.Add(this.button9);
-            this.Inventario.Location = new System.Drawing.Point(4, 22);
+            this.Inventario.Location = new System.Drawing.Point(4, 25);
             this.Inventario.Name = "Inventario";
-            this.Inventario.Size = new System.Drawing.Size(752, 350);
+            this.Inventario.Size = new System.Drawing.Size(1005, 434);
             this.Inventario.TabIndex = 4;
             this.Inventario.Text = "Inventario";
             this.Inventario.UseVisualStyleBackColor = true;
@@ -543,16 +522,16 @@
             // 
             // txtTI
             // 
-            this.txtTI.Location = new System.Drawing.Point(208, 127);
+            this.txtTI.Location = new System.Drawing.Point(246, 127);
             this.txtTI.Name = "txtTI";
-            this.txtTI.Size = new System.Drawing.Size(130, 20);
+            this.txtTI.Size = new System.Drawing.Size(130, 22);
             this.txtTI.TabIndex = 11;
             // 
             // button14
             // 
             this.button14.Location = new System.Drawing.Point(52, 127);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(150, 23);
+            this.button14.Size = new System.Drawing.Size(188, 23);
             this.button14.TabIndex = 10;
             this.button14.Text = "Crear Transferencia";
             this.button14.UseVisualStyleBackColor = true;
@@ -560,16 +539,16 @@
             // 
             // txtSI
             // 
-            this.txtSI.Location = new System.Drawing.Point(208, 76);
+            this.txtSI.Location = new System.Drawing.Point(246, 76);
             this.txtSI.Name = "txtSI";
-            this.txtSI.Size = new System.Drawing.Size(130, 20);
+            this.txtSI.Size = new System.Drawing.Size(130, 22);
             this.txtSI.TabIndex = 9;
             // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(52, 76);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(150, 23);
+            this.button10.Size = new System.Drawing.Size(188, 23);
             this.button10.TabIndex = 8;
             this.button10.Text = "Crear Salida de Inventario";
             this.button10.UseVisualStyleBackColor = true;
@@ -577,9 +556,9 @@
             // 
             // txtEI
             // 
-            this.txtEI.Location = new System.Drawing.Point(208, 29);
+            this.txtEI.Location = new System.Drawing.Point(246, 29);
             this.txtEI.Name = "txtEI";
-            this.txtEI.Size = new System.Drawing.Size(130, 20);
+            this.txtEI.Size = new System.Drawing.Size(130, 22);
             this.txtEI.TabIndex = 7;
             this.txtEI.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -587,82 +566,11 @@
             // 
             this.button9.Location = new System.Drawing.Point(52, 29);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(150, 23);
+            this.button9.Size = new System.Drawing.Size(188, 23);
             this.button9.TabIndex = 6;
             this.button9.Text = "Crear Entrada de Inventario";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
-=======
-            // DocInv
-            // 
-            this.DocInv.Controls.Add(this.textBox3);
-            this.DocInv.Controls.Add(this.btnTI);
-            this.DocInv.Controls.Add(this.textBox2);
-            this.DocInv.Controls.Add(this.btnSI);
-            this.DocInv.Controls.Add(this.txtEI);
-            this.DocInv.Controls.Add(this.btnEI);
-            this.DocInv.Location = new System.Drawing.Point(4, 25);
-            this.DocInv.Name = "DocInv";
-            this.DocInv.Size = new System.Drawing.Size(1005, 434);
-            this.DocInv.TabIndex = 4;
-            this.DocInv.Text = "Documentos Inventario";
-            this.DocInv.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(273, 180);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(172, 22);
-            this.textBox3.TabIndex = 10;
-            // 
-            // btnTI
-            // 
-            this.btnTI.Location = new System.Drawing.Point(50, 174);
-            this.btnTI.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTI.Name = "btnTI";
-            this.btnTI.Size = new System.Drawing.Size(200, 28);
-            this.btnTI.TabIndex = 9;
-            this.btnTI.Text = "Crear Transferencia";
-            this.btnTI.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(273, 119);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(172, 22);
-            this.textBox2.TabIndex = 8;
-            // 
-            // btnSI
-            // 
-            this.btnSI.Location = new System.Drawing.Point(50, 113);
-            this.btnSI.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSI.Name = "btnSI";
-            this.btnSI.Size = new System.Drawing.Size(200, 28);
-            this.btnSI.TabIndex = 7;
-            this.btnSI.Text = "Crear Salida de Inventario";
-            this.btnSI.UseVisualStyleBackColor = true;
-            // 
-            // txtEI
-            // 
-            this.txtEI.Location = new System.Drawing.Point(273, 57);
-            this.txtEI.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEI.Name = "txtEI";
-            this.txtEI.Size = new System.Drawing.Size(172, 22);
-            this.txtEI.TabIndex = 6;
-            // 
-            // btnEI
-            // 
-            this.btnEI.Location = new System.Drawing.Point(50, 51);
-            this.btnEI.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEI.Name = "btnEI";
-            this.btnEI.Size = new System.Drawing.Size(200, 28);
-            this.btnEI.TabIndex = 1;
-            this.btnEI.Text = "Crear Entrada de Inventario";
-            this.btnEI.UseVisualStyleBackColor = true;
-            this.btnEI.Click += new System.EventHandler(this.button9_Click);
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
             // 
             // Entidades
             // 
@@ -682,13 +590,8 @@
             this.Asiento.PerformLayout();
             this.DocMkt.ResumeLayout(false);
             this.DocMkt.PerformLayout();
-<<<<<<< HEAD
             this.Inventario.ResumeLayout(false);
             this.Inventario.PerformLayout();
-=======
-            this.DocInv.ResumeLayout(false);
-            this.DocInv.PerformLayout();
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
             this.ResumeLayout(false);
 
         }
@@ -734,7 +637,6 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btnEM;
         private System.Windows.Forms.Button btnOC;
-<<<<<<< HEAD
         private System.Windows.Forms.TabPage Inventario;
         private System.Windows.Forms.TextBox txtEI;
         private System.Windows.Forms.Button button9;
@@ -742,14 +644,5 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox txtSI;
         private System.Windows.Forms.Button button10;
-=======
-        private System.Windows.Forms.TabPage DocInv;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button btnTI;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button btnSI;
-        private System.Windows.Forms.TextBox txtEI;
-        private System.Windows.Forms.Button btnEI;
->>>>>>> 1f3bd4903410e5a096eb0250dbdcc1c2b7711a31
     }
 }
