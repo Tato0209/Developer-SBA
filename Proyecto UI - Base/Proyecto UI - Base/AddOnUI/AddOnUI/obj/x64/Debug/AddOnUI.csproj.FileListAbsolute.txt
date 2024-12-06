@@ -1,0 +1,12 @@
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\bin\x64\Debug\AddOnUI.exe.config
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\bin\x64\Debug\AddOnUI.exe
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\bin\x64\Debug\AddOnUI.pdb
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\AddOnUI.csproj.AssemblyReference.cache
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\Interop.SAPbobsCOM.dll
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\Interop.SAPbouiCOM.dll
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\AddOnUI.csproj.ResolveComReference.cache
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\AddOnUI.Properties.Resources.resources
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\AddOnUI.csproj.GenerateResource.cache
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\AddOnUI.csproj.CoreCompileInputs.cache
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\AddOnUI.exe
+C:\Users\renat\Downloads\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x64\Debug\AddOnUI.pdb

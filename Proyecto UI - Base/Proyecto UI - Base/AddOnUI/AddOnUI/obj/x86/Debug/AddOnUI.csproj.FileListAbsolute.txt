@@ -1,0 +1,9 @@
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\bin\Debug\AddOnUI.exe
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\bin\Debug\AddOnUI.pdb
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\Interop.SAPbobsCOM.dll
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\Interop.SAPbouiCOM.dll
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.csproj.ResolveComReference.cache
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.Properties.Resources.resources
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.csproj.GenerateResource.Cache
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.exe
+C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.pdb
