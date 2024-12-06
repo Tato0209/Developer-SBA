@@ -1,7 +1,17 @@
-﻿using BE;
-using LN;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using BE;
+using LN;
+
+using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace GUI
 {
@@ -18,6 +28,147 @@ namespace GUI
         {
             this.oSAP = objSAP;
             InitializeComponent();
+        }
+
+        private void Entidades_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarComboCancel();
+                CargarComboClose();
+                CargarComboPagos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void CargarComboPagos()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("NAME");
+
+                DataRow _row;
+
+                _row = dt.NewRow();
+                _row["ID"] = "PR"; _row["NAME"] = "Pago Recibido"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "PE"; _row["NAME"] = "Pago Efectuado"; dt.Rows.Add(_row);
+
+                LoadCombo(dt, ref comboBox1);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void CargarComboClose()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("NAME");
+
+                DataRow _row;
+
+                _row = dt.NewRow();
+                _row["ID"] = "OC"; _row["NAME"] = "Orden de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "EC"; _row["NAME"] = "Entrada de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "DC"; _row["NAME"] = "Devolución de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "OV"; _row["NAME"] = "Orden de Venta"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "EV"; _row["NAME"] = "Entrada de Venta"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "DV"; _row["NAME"] = "Devolución de Venta"; dt.Rows.Add(_row);
+
+                LoadCombo(dt, ref cboListClose);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void CargarComboCancel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("NAME");
+
+                DataRow _row;
+
+                _row = dt.NewRow();
+                _row["ID"] = "OC"; _row["NAME"] = "Orden de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "EC"; _row["NAME"] = "Entrada de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "DC"; _row["NAME"] = "Devolución de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "FC"; _row["NAME"] = "Factura de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "NC"; _row["NAME"] = "Nota Crédito de Compra"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "OV"; _row["NAME"] = "Orden de Venta"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "EV"; _row["NAME"] = "Entrada de Venta"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "DV"; _row["NAME"] = "Devolución de Venta"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "FV"; _row["NAME"] = "Factura de Venta"; dt.Rows.Add(_row);
+
+                _row = dt.NewRow();
+                _row["ID"] = "NV"; _row["NAME"] = "Nota Crédito de Venta"; dt.Rows.Add(_row);
+
+                LoadCombo(dt, ref cboListCancel);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void LoadCombo(DataTable dt, ref ComboBox Combo)
+        {
+            try
+            {
+                Combo.DataSource = dt;
+                Combo.DisplayMember = dt.Columns[1].Caption;
+                Combo.ValueMember = dt.Columns[0].Caption;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -828,7 +979,7 @@ namespace GUI
                 // oDoc.BPLid = 1;
                 oDoc.U_U_C2410_P001 = "Prueba1";
                 oDoc.U_U_C2410_P002 = "Prueba2";
-                oDoc.TipoDoc = "EI";
+                oDoc.TipoDoc = "SI";
 
                 oLine = new csDocumentLines();
                 oLine.ItemCode = "0050390001";
@@ -1038,5 +1189,207 @@ namespace GUI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cboListCancel.SelectedValue == null)
+                {
+                    MessageBox.Show("Por favor, selecciona un documento para cancelar.");
+                    return;
+                }
+
+                string sCancelDocEntry = "";
+                if (oSAP.CancelMarketingDocument(cboListCancel.SelectedValue.ToString(),
+                    Int32.Parse(txtDocCancel.Text), ref sCancelDocEntry))
+                {
+                    txtResultCancelDoc.Text = sCancelDocEntry;
+                    MessageBox.Show("Documento cancelado con éxito");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (oSAP.CloseMarketingDocument(cboListClose.SelectedValue.ToString(),
+                    Int32.Parse(txtDocCerrar.Text)))
+                {
+                    MessageBox.Show("Documento cerrado con éxito");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnCancelarPay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (oSAP.CancelPayments(comboBox1.SelectedValue.ToString(), Int32.Parse(this.txtPayCancel.Text)))
+                {
+                    MessageBox.Show("Pago cancaelado con éxito");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                csPaymentsCCard oPayCCard;
+                csPaymentsChecks oPayChecks;
+                csPaymentsDet oPayDet;
+
+                csPayments oPay = new csPayments();
+                oPay.DocDate = DateTime.Now.ToString("yyyyMMdd");
+                oPay.DocDueDate = DateTime.Now.ToString("yyyyMMdd");
+                oPay.TaxDate = DateTime.Now.ToString("yyyyMMdd");
+                oPay.CardCode = "C06723225";
+                oPay.DocType = "C";
+                oPay.Comments = "Creted by SDK";
+                oPay.CashAcct = "_SYS00000000001";
+                oPay.CashSum = 1079.96;
+                oPay.BPLId = 1;
+                oPay.TipoDoc = "PR";
+
+                oPayDet = new csPaymentsDet();
+                oPayDet.InvoiceId = 1091;
+                oPayDet.InvType = "13";
+                oPayDet.SumApplied = 1079.96;
+                oPay.ListDets.Add(oPayDet);
+
+
+                string sDocEntry = "";
+                if (oSAP.AddPayments(oPay, ref sDocEntry))
+                {
+                    this.txtInvoicePay.Text = sDocEntry;
+                    MessageBox.Show("Pago creado con éxito");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                csPaymentsCCard oPayCCard;
+                csPaymentsChecks oPayChecks;
+                csPaymentsDet oPayDet;
+
+                csPayments oPay = new csPayments();
+                oPay.DocDate = DateTime.Now.ToString("yyyyMMdd");
+                oPay.DocDueDate = DateTime.Now.ToString("yyyyMMdd");
+                oPay.TaxDate = DateTime.Now.ToString("yyyyMMdd");
+                oPay.CardCode = "P20610350772";
+                oPay.DocType = "S";
+                oPay.Comments = "Creted by SDK";
+                oPay.CashAcct = "_SYS00000000001";
+                oPay.CashSum = 2500.00;
+                oPay.BPLId = 1;
+                oPay.TipoDoc = "PE";
+
+                oPayDet = new csPaymentsDet();
+                oPayDet.InvoiceId = 1166;
+                oPayDet.InvType = "18";
+                oPayDet.SumApplied = 5000;
+                oPay.ListDets.Add(oPayDet);
+
+                oPayCCard = new csPaymentsCCard();
+                oPayCCard.CreditCard = 3;
+                oPayCCard.NumOfPmnts = 1;
+                oPayCCard.CreditSum = 2500.00;
+                oPayCCard.FirstPaymentDue = "20250101";
+                oPayCCard.VoucherNum = "1234";
+                oPayCCard.CreditAcct = "_SYS00000000005";
+                oPay.ListCCard.Add(oPayCCard);
+
+                string sDocEntry = "";
+                if (oSAP.AddPayments(oPay, ref sDocEntry))
+                {
+                    this.txtOutgoingPay.Text = sDocEntry;
+                    MessageBox.Show("Pago creado con éxito");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void textBox25_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEjecutar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                oSAP.ExecuteRecordSet(this.txtConsulta.Text);
+
+                //Pasar consulta a lista de objetos
+                string xml = csSAP.oRec.GetAsXML();
+
+                XDocument XDoc = null;
+                XDoc = XDocument.Parse(xml);
+
+                var xElements2 = XDoc.XPathSelectElements("BOM/BO/ocrd");
+
+                var ListaFinalX = xElements2.Descendants("row").Select((s, i) => new CsBussinesPartner
+                {
+                    CardCode = s.Element("cardcode").Value,
+                    CardName = s.Element("cardname").Value,
+                });
+
+                List<CsBussinesPartner> ListaFinalW = xElements2.Descendants("row").Select((s, i) => new CsBussinesPartner
+                {
+                    CardCode = s.Element("cardcode").Value,
+                    CardName = s.Element("cardname").Value,
+                }).ToList();
+
+                int conta = ListaFinalW.Count;
+
+                foreach (CsBussinesPartner obj in ListaFinalW)
+                {
+                    string a = obj.CardCode;
+                    string b = obj.CardName;
+                };
+
+
+
+                //Recorrido normal
+                if (csSAP.oRec.RecordCount > 0)
+                {
+                    while (!csSAP.oRec.EoF)
+                    {
+                        txtConsulta.Text += csSAP.oRec.Fields.Item(0).Value.ToString() + " - " + csSAP.oRec.Fields.Item(1).Value.ToString();
+                        csSAP.oRec.MoveNext();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
+    
+
 }

@@ -1,6 +1,11 @@
 ﻿using BE;
 using SAPbobsCOM;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LN
 {
@@ -10,6 +15,7 @@ namespace LN
         public static int iRet;
         public static string sErrMsg;
         public static int iErrCod;
+        public static Recordset oRec = null;
 
 
         public bool LoginSAP(csCompany objCompany)
@@ -706,10 +712,385 @@ namespace LN
                 Release(oDocSAP);
             }
         }
+        public bool CloseMarketingDocument(string TipoDoc, int sDocEntry)
+        {
+            SAPbobsCOM.Documents oDocSAP = null;
+
+            try
+            {
+                switch (TipoDoc)
+                {
+                    case "OC": //Orden de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseOrders);
+                        break;
+                    case "EC": //Entrada de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseDeliveryNotes);
+                        break;
+                    case "DC": //Devolucion de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseReturns);
+                        break;
+                    //******* VENTAS ********
+                    case "OV": //Orden de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oOrders);
+                        break;
+                    case "EV": //Entrada de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oDeliveryNotes);
+                        break;
+                    case "DV": //Devolucion de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oReturns);
+                        break;
+                }
+
+                if (oDocSAP.GetByKey(sDocEntry))
+                {
+                    oDocSAP.SpecifiedClosingDate = GetFecha("20241126");
+                    oDocSAP.ClosingDate = GetFecha("20241126");
+
+                    iRet = oDocSAP.Update();
+
+
+                    iRet = oDocSAP.Close();
+
+                    if (iRet == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        oCompany.GetLastError(out iErrCod, out sErrMsg);
+                        throw new Exception(String.Concat(iErrCod, ": ", sErrMsg));
+                    }
+                }
+                else
+                {
+                    throw new Exception("Registro no encontrado en SAP");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Release(oDocSAP);
+
+            }
+        }
+        public bool CancelMarketingDocument(string TipoDoc, int sDocEntry, ref string sCancelDocEntry)
+        {
+            SAPbobsCOM.Documents oDocSAP = null;
+
+            try
+            {
+                switch (TipoDoc)
+                {
+                    case "OC": //Orden de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseOrders);
+                        break;
+                    case "EC": //Entrada de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseDeliveryNotes);
+                        break;
+                    case "DC": //Devolucion de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseReturns);
+                        break;
+                    case "FC": //Factura de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseInvoices);
+                        break;
+                    case "NC": //Nota de Credito de Compra
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oPurchaseCreditNotes);
+                        break;
+                    //******* VENTAS ********
+                    case "OV": //Orden de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oOrders);
+                        break;
+                    case "EV": //Entrada de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oDeliveryNotes);
+                        break;
+                    case "DV": //Devolucion de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oReturns);
+                        break;
+                    case "FV": //Factura de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oInvoices);
+                        break;
+                    case "NV": //Nota de Credito de Venta
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oCreditNotes);
+                        break;
+                    //******* INVENTARIOS ********
+                    case "EI": //Entrada de Inventario
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oInventoryGenEntry);
+                        break;
+                    case "SI": //Salida de Inventario
+                        oDocSAP = (SAPbobsCOM.Documents)oCompany.GetBusinessObject(BoObjectTypes.oInventoryGenExit);
+                        break;
+                }
+
+
+                if (TipoDoc == "OC" || TipoDoc == "OV")
+                {
+                    if (oDocSAP.GetByKey(sDocEntry))
+                    {
+                        iRet = oDocSAP.Cancel();
+
+                        if (iRet == 0)
+                        {
+                            sCancelDocEntry = sDocEntry.ToString();
+                            return true;
+                        }
+                        else
+                        {
+                            oCompany.GetLastError(out iErrCod, out sErrMsg);
+                            throw new Exception(String.Concat(iErrCod, ": ", sErrMsg));
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Registro no encontrado en SAP");
+                    }
+                }
+                else
+                {
+                    if (oDocSAP.GetByKey(sDocEntry))
+                    {
+                        SAPbobsCOM.Documents oCancelDoc = oCancelDoc = oDocSAP.CreateCancellationDocument();
+                        oCancelDoc.DocDate = DateTime.Now;
+
+                        iRet = oCancelDoc.Add();
+
+                        Release(oCancelDoc);
+
+                        if (iRet == 0)
+                        {
+                            sCancelDocEntry = oCompany.GetNewObjectKey();
+                            return true;
+                        }
+                        else
+                        {
+                            oCompany.GetLastError(out iErrCod, out sErrMsg);
+                            throw new Exception(String.Concat(iErrCod, ": ", sErrMsg));
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Registro no encontrado en SAP");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Release(oDocSAP);
+
+            }
+        }
+        public bool AddPayments(csPayments objPay, ref string sDocEntry)
+        {
+            SAPbobsCOM.Payments oDocSAP = null;
+
+            try
+            {
+                switch (objPay.TipoDoc)
+                {
+                    case "PR": //Pago Recibido
+                        oDocSAP = (SAPbobsCOM.Payments)oCompany.GetBusinessObject(BoObjectTypes.oIncomingPayments);
+                        break;
+                    case "PE": //Pago Efectuado
+                        oDocSAP = (SAPbobsCOM.Payments)oCompany.GetBusinessObject(BoObjectTypes.oVendorPayments);
+                        break;
+                }
+
+                if (objPay.DocDate != null && objPay.DocDate != "") oDocSAP.DocDate = GetFecha(objPay.DocDate);
+                if (objPay.DocDueDate != null && objPay.DocDueDate != "") oDocSAP.DueDate = GetFecha(objPay.DocDueDate);
+                if (objPay.TaxDate != null && objPay.TaxDate != "") oDocSAP.TaxDate = GetFecha(objPay.TaxDate);
+                if (objPay.CardCode != null && objPay.CardCode != "") oDocSAP.CardCode = objPay.CardCode;
+                if (objPay.CardName != null && objPay.CardName != "") oDocSAP.CardName = objPay.CardName;
+                oDocSAP.DocType = objPay.DocType == "C" ? BoRcptTypes.rCustomer :
+                                  objPay.DocType == "S" ? BoRcptTypes.rSupplier : BoRcptTypes.rAccount;
+                if (objPay.CounterRef != null && objPay.CounterRef != "") oDocSAP.CounterReference = objPay.CounterRef;
+                if (objPay.Comments != null && objPay.Comments != "") oDocSAP.Remarks = objPay.Comments;
+                if (objPay.JrnlMemo != null && objPay.JrnlMemo != "") oDocSAP.JournalRemarks = objPay.JrnlMemo;
+                if (objPay.DocCur != null && objPay.DocCur != "") oDocSAP.DocCurrency = objPay.DocCur;
+                if (objPay.DocRate != 0) oDocSAP.DocRate = objPay.DocRate;
+                if (objPay.CashAcct != null && objPay.CashAcct != "") oDocSAP.CashAccount = objPay.CashAcct;
+                if (objPay.CashSum != 0) oDocSAP.CashSum = objPay.CashSum;
+                if (objPay.TrsfAcct != null && objPay.TrsfAcct != "") oDocSAP.TransferAccount = objPay.TrsfAcct;
+                if (objPay.TrfSum != 0) oDocSAP.TransferSum = objPay.TrfSum;
+                if (objPay.TrsfDate != null && objPay.TrsfDate != "") oDocSAP.TransferDate = GetFecha(objPay.TrsfDate);
+                if (objPay.TrsfRef != null && objPay.TrsfRef != "") oDocSAP.TransferReference = objPay.TrsfRef;
+                if (objPay.DocCur != null && objPay.DocCur != "") oDocSAP.DocCurrency = objPay.DocCur;
+                if (objPay.BPLId != 0) oDocSAP.BPLID = objPay.BPLId;
+
+                foreach (csPaymentsCCard objCCard in objPay.ListCCard)
+                {
+                    if (objCCard.CreditCard != 0) oDocSAP.CreditCards.CreditCard = objCCard.CreditCard;
+                    if (objCCard.CreditAcct != null && objCCard.CreditAcct != "") oDocSAP.CreditCards.CreditAcct = objCCard.CreditAcct;
+                    if (objCCard.CrCardNum != null && objCCard.CrCardNum != "") oDocSAP.CreditCards.CreditCardNumber = objCCard.CrCardNum;
+                    if (objCCard.CardValid != null && objCCard.CardValid != "") oDocSAP.CreditCards.CardValidUntil = GetFecha(objCCard.CardValid);
+                    if (objCCard.VoucherNum != null && objCCard.VoucherNum != "") oDocSAP.CreditCards.VoucherNum = objCCard.VoucherNum;
+                    if (objCCard.OwnerIdNum != null && objCCard.OwnerIdNum != "") oDocSAP.CreditCards.OwnerIdNum = objCCard.OwnerIdNum;
+                    if (objCCard.OwnerPhone != null && objCCard.OwnerPhone != "") oDocSAP.CreditCards.OwnerPhone = objCCard.OwnerPhone;
+                    if (objCCard.NumOfPmnts != 0) oDocSAP.CreditCards.NumOfCreditPayments = objCCard.NumOfPmnts;
+                    if (objCCard.CreditSum != 0) oDocSAP.CreditCards.CreditSum = objCCard.CreditSum;
+                    if (objCCard.CreditType != null && objCCard.CreditType != "")
+                    {
+                        oDocSAP.CreditCards.CreditType = objCCard.CreditType == "U" ? BoRcptCredTypes.cr_Telephone :
+                                                         objCCard.CreditType == "S" ? BoRcptCredTypes.cr_Regular : BoRcptCredTypes.cr_InternetTransaction;
+                    }
+                    if (objCCard.FirstPaymentDue != null && objCCard.FirstPaymentDue != "") oDocSAP.CreditCards.FirstPaymentDue = GetFecha(objCCard.FirstPaymentDue);
+                    oDocSAP.CreditCards.Add();
+                }
+
+                foreach (csPaymentsDet objDet in objPay.ListDets)
+                {
+                    if (objDet.SumApplied != 0) oDocSAP.Invoices.SumApplied = objDet.SumApplied;
+                    if (objDet.OcrCode != null && objDet.OcrCode != "") oDocSAP.Invoices.DistributionRule = objDet.OcrCode;
+                    if (objDet.OcrCode2 != null && objDet.OcrCode2 != "") oDocSAP.Invoices.DistributionRule2 = objDet.OcrCode2;
+                    if (objDet.OcrCode3 != null && objDet.OcrCode3 != "") oDocSAP.Invoices.DistributionRule3 = objDet.OcrCode3;
+                    if (objDet.OcrCode4 != null && objDet.OcrCode4 != "") oDocSAP.Invoices.DistributionRule4 = objDet.OcrCode4;
+                    if (objDet.OcrCode5 != null && objDet.OcrCode5 != "") oDocSAP.Invoices.DistributionRule5 = objDet.OcrCode5;
+                    if (objDet.InvoiceId != 0) oDocSAP.Invoices.DocEntry = objDet.InvoiceId;
+                    if (objDet.InvType != null && objDet.InvType != "")
+                    {
+                        switch (objDet.InvType)
+                        {
+                            case "30":
+                                oDocSAP.Invoices.InvoiceType = BoRcptInvTypes.it_JournalEntry;
+                                break;
+                            case "13":
+                                oDocSAP.Invoices.InvoiceType = BoRcptInvTypes.it_Invoice;
+                                break;
+                            case "14":
+                                oDocSAP.Invoices.InvoiceType = BoRcptInvTypes.it_CredItnote;
+                                break;
+                            case "18":
+                                oDocSAP.Invoices.InvoiceType = BoRcptInvTypes.it_PurchaseInvoice;
+                                break;
+                            case "19":
+                                oDocSAP.Invoices.InvoiceType = BoRcptInvTypes.it_PurchaseCreditNote;
+                                break;
+                        }
+                    }
+                    oDocSAP.Invoices.Add();
+                }
+
+                foreach (csPaymentsChecks objChecks in objPay.LisChecks)
+                {
+                    if (objChecks.DueDate != null && objChecks.DueDate != "") oDocSAP.Checks.DueDate = GetFecha(objChecks.DueDate);
+                    if (objChecks.CheckSum != 0) oDocSAP.Checks.CheckSum = objChecks.CheckSum;
+                    if (objChecks.CheckNum != 0) oDocSAP.Checks.CheckNumber = objChecks.CheckNum;
+                    if (objChecks.BankCode != null && objChecks.BankCode != "") oDocSAP.Checks.BankCode = objChecks.BankCode;
+                    if (objChecks.AcctNum != null && objChecks.AcctNum != "") oDocSAP.Checks.AccounttNum = objChecks.AcctNum;
+                    if (objChecks.CheckAcct != null && objChecks.CheckAcct != "") oDocSAP.Checks.CheckAccount = objChecks.CheckAcct;
+                    if (objChecks.Trnsfrable != null && objChecks.Trnsfrable != "") oDocSAP.Checks.Trnsfrable = objChecks.Trnsfrable == "Y" ? BoYesNoEnum.tYES : BoYesNoEnum.tNO;
+                    if (objChecks.CountryCod != null && objChecks.CountryCod != "") oDocSAP.Checks.CountryCode = objChecks.CountryCod;
+                    oDocSAP.Checks.Add();
+                }
+
+
+                iRet = oDocSAP.Add();
+
+                if (iRet == 0)
+                {
+                    sDocEntry = oCompany.GetNewObjectKey();
+                    return true;
+                }
+                else
+                {
+                    oCompany.GetLastError(out iErrCod, out sErrMsg);
+                    throw new Exception(String.Concat(iErrCod, ": ", sErrMsg));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Release(oDocSAP);
+            }
+        }
+        public bool CancelPayments(string TipoDoc, int sDocEntry)
+        {
+            SAPbobsCOM.Payments oDocSAP = null;
+
+            try
+            {
+                switch (TipoDoc)
+                {
+                    case "PR": //Pago Recibido
+                        oDocSAP = (SAPbobsCOM.Payments)oCompany.GetBusinessObject(BoObjectTypes.oIncomingPayments);
+                        break;
+                    case "PE": //Pago Efectuado
+                        oDocSAP = (SAPbobsCOM.Payments)oCompany.GetBusinessObject(BoObjectTypes.oVendorPayments);
+                        break;
+                }
+
+                if (oDocSAP.GetByKey(sDocEntry))
+                {
+                    iRet = oDocSAP.Cancel();
+
+                    if (iRet == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        oCompany.GetLastError(out iErrCod, out sErrMsg);
+                        throw new Exception(String.Concat(iErrCod, ": ", sErrMsg));
+                    }
+                }
+                else
+                {
+                    throw new Exception("Registro no existe en SAP");
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Release(oDocSAP);
+            }
+        }
+        public void ExecuteRecordSet(string Query)
+        {
+            try
+            {
+                oRec = (Recordset)oCompany.GetBusinessObject(BoObjectTypes.BoRecordset);
+                oRec.DoQuery(Query);
+
+                //while (!oRec.EoF)
+                //{
+                //    //Obtienes la información
+                //    //string aa = oRec.Fields.Item("CAMPO").Value.ToString();
+                //    oRec.MoveNext();
+                //}
+
+                //string xml = oRec.GetAsXML();
+
+                //XDocument XDoc = XDocument.Parse(xml);
+                //ordenesPendientes = (from q in XDoc.Descendants("row")
+                //                     select Convert.ToInt32(q.Element("DocEntry").Value));
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DateTime GetFecha(string sFecha)
         {
             return DateTime.Parse(sFecha.Substring(6, 2) + "/" + sFecha.Substring(4, 2) + "/" + sFecha.Substring(0, 4)); // Convertir fecha // fecha en formato AAAAMMDD
         }
-       
     }
 }

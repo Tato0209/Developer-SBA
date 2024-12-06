@@ -207,6 +207,7 @@
             this.cmbServerType.Name = "cmbServerType";
             this.cmbServerType.Size = new System.Drawing.Size(160, 21);
             this.cmbServerType.TabIndex = 18;
+            this.cmbServerType.SelectedIndexChanged += new System.EventHandler(this.cmbServerType_SelectedIndexChanged);
             // 
             // Form1
             // 

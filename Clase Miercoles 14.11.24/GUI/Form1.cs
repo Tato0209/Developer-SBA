@@ -51,5 +51,10 @@ namespace GUI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void cmbServerType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
