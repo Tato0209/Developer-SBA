@@ -68,7 +68,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="App\Program.cs" />
+    <Compile Include="Logica\EntradaInventario.cs" />
     <Compile Include="Logica\FacturaCompras.cs" />
+    <Compile Include="Logica\FormTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

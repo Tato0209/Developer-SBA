@@ -37,14 +37,18 @@ namespace AddOnUI.App
                 try
                 {
                     SAPbouiCOM.Form oForm = Globals.SBO_Application.Forms.Item(pVal.FormUID);
-                    if(pVal.EventType == SAPbouiCOM.BoEventTypes.et_FORM_LOAD)
+                    if (pVal.EventType == SAPbouiCOM.BoEventTypes.et_FORM_LOAD)
                     {
 
-                        if(pVal.BeforeAction == true)
+                        if (pVal.BeforeAction == true)
                         {
                             if (oForm.TypeEx == "141")
                             {
                                 FacturaCompras.GenerarControles(oForm);
+                            }
+                            if (oForm.TypeEx == "721")
+                            {
+                                EntradaInventario.GenerarControles(oForm);
                             }
 
                             //ANTES DE CARGAR EL FORMULARIO
@@ -53,6 +57,32 @@ namespace AddOnUI.App
                         {
                             //DESPUES DE CARGAR EL FORMULARIO
                         }
+
+                    }
+
+
+                    if (pVal.EventType == SAPbouiCOM.BoEventTypes.et_ITEM_PRESSED)
+                    {
+                        if (pVal.BeforeAction)
+                        {
+
+                        }
+                        else
+                        {
+                            if (pVal.FormType == 141 && pVal.ItemUID == "BtnAnu" && oForm.Mode == SAPbouiCOM.BoFormMode.fm_OK_MODE)
+                            {
+                                FacturaCompras.AnularCompra(oForm);
+                            }
+                            if (pVal.FormType == 721 && pVal.ItemUID == "BtnCancel" && oForm.Mode == SAPbouiCOM.BoFormMode.fm_OK_MODE)
+                            {
+                                EntradaInventario.AnularEntrada(oForm);
+                            }
+                        }
+                    }
+
+                    if (pVal.FormTypeEx == "PruebasForm")
+                    {
+                        FormTest.Action(oForm, pVal);
                     }
                 }
                 catch (Exception ex)
@@ -76,7 +106,7 @@ namespace AddOnUI.App
             BubbleEvent = true;
             try
             {
-               
+
 
             }
             catch (Exception ex)
@@ -115,7 +145,18 @@ namespace AddOnUI.App
         {
             BubbleEvent = true;
 
-           
+            if (pVal.BeforeAction)
+            {
+            }
+            else
+            {
+                switch(pVal.MenuUID)
+                {
+                    case "SM_ADDON_PRUEBAS":
+                        FormTest.CargarFormulario();
+                        break;
+                }
+            }
         }
     }
 }

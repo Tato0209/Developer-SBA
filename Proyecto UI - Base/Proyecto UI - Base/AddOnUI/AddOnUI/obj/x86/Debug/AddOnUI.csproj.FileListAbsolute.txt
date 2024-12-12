@@ -7,3 +7,15 @@ C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.Proper
 C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.csproj.GenerateResource.Cache
 C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.exe
 C:\Recursos\Proyecto UI - 2019 - 01\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.pdb
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\bin\Debug\AddOnUI.exe.config
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\bin\Debug\AddOnUI.exe
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\bin\Debug\AddOnUI.pdb
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.csproj.AssemblyReference.cache
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\Interop.SAPbobsCOM.dll
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\Interop.SAPbouiCOM.dll
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.csproj.ResolveComReference.cache
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.Properties.Resources.resources
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.csproj.GenerateResource.cache
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.csproj.CoreCompileInputs.cache
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.exe
+E:\Cursos\DEVELOPER_SAP_BO\Developer-SBA\Developer-SBA\Proyecto UI - Base\Proyecto UI - Base\AddOnUI\AddOnUI\obj\x86\Debug\AddOnUI.pdb

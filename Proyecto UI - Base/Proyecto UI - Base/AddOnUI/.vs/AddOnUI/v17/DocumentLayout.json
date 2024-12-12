@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{59A30101-7993-49FB-91D8-A44BB6AE1490}|AddOnUI\\AddOnUI.csproj|e:\\cursos\\developer_sap_bo\\developer-sba\\developer-sba\\proyecto ui - base\\proyecto ui - base\\addonui\\addonui\\logica\\formtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A30101-7993-49FB-91D8-A44BB6AE1490}|AddOnUI\\AddOnUI.csproj|solutionrelative:addonui\\logica\\formtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A30101-7993-49FB-91D8-A44BB6AE1490}|AddOnUI\\AddOnUI.csproj|E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\addonui\\app\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A30101-7993-49FB-91D8-A44BB6AE1490}|AddOnUI\\AddOnUI.csproj|solutionrelative:addonui\\app\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A30101-7993-49FB-91D8-A44BB6AE1490}|AddOnUI\\AddOnUI.csproj|e:\\cursos\\developer_sap_bo\\developer-sba\\developer-sba\\proyecto ui - base\\proyecto ui - base\\addonui\\addonui\\app\\connect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A30101-7993-49FB-91D8-A44BB6AE1490}|AddOnUI\\AddOnUI.csproj|solutionrelative:addonui\\app\\connect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Connect.cs",
+              "DocumentMoniker": "E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\AddOnUI\\App\\Connect.cs",
+              "RelativeDocumentMoniker": "AddOnUI\\App\\Connect.cs",
+              "ToolTip": "E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\AddOnUI\\App\\Connect.cs",
+              "RelativeToolTip": "AddOnUI\\App\\Connect.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAFsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T03:01:06.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormTest.cs",
+              "DocumentMoniker": "E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\AddOnUI\\Logica\\FormTest.cs",
+              "RelativeDocumentMoniker": "AddOnUI\\Logica\\FormTest.cs",
+              "ToolTip": "E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\AddOnUI\\Logica\\FormTest.cs",
+              "RelativeToolTip": "AddOnUI\\Logica\\FormTest.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T01:47:26.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.cs",
+              "DocumentMoniker": "E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\AddOnUI\\App\\Main.cs",
+              "RelativeDocumentMoniker": "AddOnUI\\App\\Main.cs",
+              "ToolTip": "E:\\Cursos\\DEVELOPER_SAP_BO\\Developer-SBA\\Developer-SBA\\Proyecto UI - Base\\Proyecto UI - Base\\AddOnUI\\AddOnUI\\App\\Main.cs",
+              "RelativeToolTip": "AddOnUI\\App\\Main.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwBAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T21:46:25.63Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

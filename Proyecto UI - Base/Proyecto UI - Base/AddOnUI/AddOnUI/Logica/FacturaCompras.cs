@@ -10,55 +10,98 @@ namespace AddOnUI.Logica
 {
     public class FacturaCompras
     {
-        /*public static void CrearFacturaCompras()
+        public static void GenerarControles(SAPbouiCOM.Form oForm)
         {
             try
             {
-                SAPbobsCOM.Documents oPurchaseInvoice = default(SAPbobsCOM.Documents);
-                oPurchaseInvoice = (SAPbobsCOM.Documents)Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseInvoices);
-                oPurchaseInvoice.CardCode = "C20000";
-                oPurchaseInvoice.DocDate = DateTime.Now;
-                oPurchaseInvoice.DocDueDate = DateTime.Now;
-                oPurchaseInvoice.TaxDate = DateTime.Now;
-                oPurchaseInvoice.Lines.ItemCode = "A00001";
-                oPurchaseInvoice.Lines.Quantity = 1;
-                oPurchaseInvoice.Lines.Price = 100;
-                oPurchaseInvoice.Lines.Add();
-                if (oPurchaseInvoice.Add() != 0)
-                {
-                    Globals.SBO_Application.MessageBox(Globals.oCompany.GetLastErrorDescription());
-                }
-                else
-                {
-                    Globals.SBO_Application.MessageBox("Factura de compras creada correctamente");
-                }
-            }
-            catch (Exception ex)
-            {
-                Globals.SBO_Application.MessageBox(ex.Message);
-            }
-        }*/
+                SAPbouiCOM.Button oBtnCancel = oForm.Items.Item("2").Specific; //
 
-        public static void GenerarControles(SAPbouiCOM.Form oform)
-        {
-            try
-            {
-                SAPbouiCOM.Item oItem = oform.Items.Add("BtnAnu", SAPbouiCOM.BoFormItemTypes.it_BUTTON); // Agregar un boton a un formulario
-                oItem.Left = 100; // Posicion en X
-                oItem.Top = 100; // Posicion en Y
-                oItem.Width = 100; // Ancho
-                oItem.Height = 20; // Alto
-                SAPbouiCOM.Button oButton = ((SAPbouiCOM.Button)oItem.Specific); // Castear el item a un boton
-                oButton.Caption = "Anular Factura"; // Texto del boton
-                // ((SAPbouiCOM.Button) oItem.Specific).Caption = "Anular Factura"; // Otra forma de asignar el texto del boton
+                SAPbouiCOM.Item oItem = oForm.Items.Add("BtnAnu", SAPbouiCOM.BoFormItemTypes.it_BUTTON);
+                oItem.Left = oBtnCancel.Item.Left + oBtnCancel.Item.Width + 7;
+                oItem.Top = oBtnCancel.Item.Top;
+                oItem.Width = 80;
+                oItem.Height = oBtnCancel.Item.Height;
+
+                SAPbouiCOM.Button oBtn = ((SAPbouiCOM.Button)(oItem.Specific));
+                oBtn.Caption = "Anular Factura";
 
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
 
+        }
+        public static void AnularCompra(SAPbouiCOM.Form oForm)
+        {
+            try
+            {
+                SAPbouiCOM.ComboBox cEstado = oForm.Items.Item("81").Specific;
+                string sEstado = cEstado.Selected.Value.ToString();
+
+                if (sEstado != "1")
+                {
+                    throw new Exception("Solo se pueden cancelar documentos en estado abierto");
+                }
+
+
+                int iRpta = Globals.SBO_Application.MessageBox("Desea anular la factura?", 3, "Si", "No", "Quizas");
+
+
+                if (iRpta == 1)
+                {
+                    SAPbouiCOM.EditText eDocNum = oForm.Items.Item("8").Specific;
+
+
+                    Globals.Query = "SELECT \"DocEntry\" FROM OPCH WHERE \"DocNum\" = " + eDocNum.Value.ToString();
+                    Globals.RunQuery(Globals.Query);
+                    int iDocEntry = Int32.Parse(Globals.oRec.Fields.Item(0).Value.ToString());
+                    Globals.Release(Globals.oRec);
+
+
+                    SAPbobsCOM.Documents oDocSAP =
+                       (SAPbobsCOM.Documents)Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseInvoices);
+
+
+                    if (oDocSAP.GetByKey(iDocEntry))
+                    {
+                        SAPbobsCOM.Documents oDocCancel = oDocSAP.CreateCancellationDocument();
+                        //modificar campos en el documento de cancelación
+                        oDocCancel.Comments = oDocSAP.Comments + " - Cancelado por SDK";
+
+
+                        Globals.lRetCode = oDocCancel.Add();
+
+
+                        Globals.Release(oDocSAP);
+                        Globals.Release(oDocCancel);
+
+
+                        if (Globals.lRetCode == 0)
+                        {
+                            Globals.SBO_Application.SetStatusBarMessage("Documento anulado correctamente", SAPbouiCOM.BoMessageTime.bmt_Short, false);
+
+
+                            Globals.SBO_Application.ActivateMenuItem("1304");
+                        }
+                        else
+                        {
+                            Globals.oCompany.GetLastError(out Globals.lErrCode, out Globals.sErrMsg);
+                            throw new Exception(String.Concat(Globals.lErrCode, ": " + Globals.sErrMsg));
+                        }
+                    }
+                    else
+                    {
+                        Globals.Release(oDocSAP);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
+
 
     }
 }

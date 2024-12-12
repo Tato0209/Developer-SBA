@@ -82,11 +82,14 @@ namespace AddOnUI.App
             Globals.oFilter.AddEx("139");//OV
             Globals.oFilter.AddEx("142");//Pedido
             Globals.oFilter.AddEx("1470000200"); //Requerimiento
+            Globals.oFilter.AddEx("141");//Factura de Compras
+            Globals.oFilter.AddEx("721");//Entrada de inventario
             Globals.SBO_Application.SetFilter(Globals.oFilters);
             #endregion
 
             #region FORM_LOAD
             Globals.oFilter = Globals.oFilters.Add(SAPbouiCOM.BoEventTypes.et_FORM_LOAD);
+            Globals.oFilter.AddEx("PruebasForm");
             Globals.oFilter.AddEx("133");//Factura de Ventas
             Globals.oFilter.AddEx("179");//Nota de Credito de Ventas
             Globals.oFilter.AddEx("139");//OV
